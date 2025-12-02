@@ -1,4 +1,5 @@
-import 'package:cosmetics/views/onboarding0.dart';
+import 'package:cosmetics/views/login.dart';
+
 import 'package:flutter/material.dart';
 
 class OnboardingView2 extends StatelessWidget {
@@ -53,9 +54,7 @@ class OnboardingView2 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => OnBoardingView0(),
-                        ),
+                        MaterialPageRoute(builder: (context) => Loginview()),
                       );
                     },
                     icon: Icon(Icons.arrow_forward_ios, color: Colors.white),
