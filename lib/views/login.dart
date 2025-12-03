@@ -1,3 +1,4 @@
+import 'package:cosmetics/views/sign.dart';
 import 'package:flutter/material.dart';
 
 class Loginview extends StatefulWidget {
@@ -71,15 +72,16 @@ class _LoginviewState extends State<Loginview> {
                     ),
 
                     SizedBox(width: 6),
-
-                    SizedBox(
-                      height: 47,
-                      width: 285,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(style: BorderStyle.solid),
+                    Flexible(
+                      child: SizedBox(
+                        height: 46,
+                        width: 285,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            labelText: 'Phone Number',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(style: BorderStyle.solid),
+                            ),
                           ),
                         ),
                       ),
@@ -132,7 +134,12 @@ class _LoginviewState extends State<Loginview> {
                         Color(0xffD75D72),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignInView()),
+                      );
+                    },
                     child: Text('Login', style: TextStyle(color: Colors.white)),
                   ),
                 ),

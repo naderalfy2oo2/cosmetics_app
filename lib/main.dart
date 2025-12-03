@@ -1,4 +1,5 @@
 import 'package:cosmetics/views/splash.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
