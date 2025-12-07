@@ -1,18 +1,18 @@
-import 'package:cosmetics/views/forget_password.dart';
+import 'package:cosmetics/views/create_password.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 
-class VerifyCodeView extends StatefulWidget {
-  const VerifyCodeView({super.key});
+class VerifyCode2View extends StatefulWidget {
+  const VerifyCode2View({super.key});
 
   @override
-  State<VerifyCodeView> createState() => _VerifyCodeViewState();
+  State<VerifyCode2View> createState() => _VerifyCode2ViewState();
 }
 
-class _VerifyCodeViewState extends State<VerifyCodeView> {
+class _VerifyCode2ViewState extends State<VerifyCode2View> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -209,7 +209,7 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ForgetPasswordView(),
+                          builder: (context) => CreatePasswordView(),
                         ),
                       );
                     },
@@ -219,7 +219,7 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
                       ),
                     ),
                     child: Text(
-                      'Verify',
+                      'Done',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
