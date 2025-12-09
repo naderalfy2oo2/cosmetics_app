@@ -40,8 +40,8 @@ class ProfileView extends StatelessWidget {
                         children: [
                           Center(
                             child: ClipOval(
-                              child: Image.asset(
-                                'assets/images/profile.jpg',
+                              child: Image.network(
+                                'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
                                 height: 96,
                                 width: 96,
                                 fit: BoxFit.cover,

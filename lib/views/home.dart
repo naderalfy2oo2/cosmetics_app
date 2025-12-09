@@ -43,7 +43,9 @@ class HomeView extends StatelessWidget {
 
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/home.jpg'),
+                        image: NetworkImage(
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYSymcdSazaUOstbVoaInRVhyC4o9wVXTILA&s',
+                        ),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -139,23 +141,27 @@ class HomeView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   List<Map<String, dynamic>> products = [
                     {
-                      'image': 'assets/images/home1.jpg',
+                      'image':
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNfOOB51KYeAcnIGhgk5zsnGAU-I_qN48kDQ&s',
                       'name': 'Face tint / lip tint',
                       'price': 99,
                     },
                     {
-                      'image': 'assets/images/home2.jpg',
+                      'image':
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr-gckYz5b5R67F8yIiJw8sPn3sm8-3TtnGA&s',
                       'name': 'Athe Red lipstick',
                       'price': 129,
                     },
                     {
-                      'image': 'assets/images/home3.jpg',
+                      'image':
+                          'https://ramfabeauty.com/cdn/shop/files/lash-plumping-mascara-golden-rose-750162.jpg?v=1726724148',
                       'name': 'Mascara for lashes',
                       'price': 79,
                     },
 
                     {
-                      'image': 'assets/images/home4.jpg',
+                      'image':
+                          'https://cdn.shopify.com/s/files/1/0582/2885/files/1025_Holiday_2025_LLEM_Brynn_Product-With-Swatch.jpg?auto=format&v=1759272281',
                       'name': 'Mascara for lashes',
                       'price': 79,
                     },
@@ -164,7 +170,7 @@ class HomeView extends StatelessWidget {
                   return Column(
                     children: [
                       Expanded(
-                        child: Image.asset(
+                        child: Image.network(
                           products[index]['image'],
                           height: 169,
                           width: 161,
@@ -212,23 +218,27 @@ class HomeView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   List<Map<String, dynamic>> products = [
                     {
-                      'image': 'assets/images/pervin.jpg',
+                      'image':
+                          'https://static.sayidaty.net/styles/900_scale/public/2021-10/4934.jpeg.webp',
                       'name': 'IDYLL Perfume',
                       'price': 1000,
                     },
                     {
-                      'image': 'assets/images/hand cream.jpg',
+                      'image':
+                          'https://zynah.me/cdn/shop/products/InfinitySweetAlmondHandCream-ZYNAHEgypt.jpg?v=1665422408',
                       'name': 'Hand Cream',
                       'price': 120,
                     },
                     {
-                      'image': 'assets/images/pen.jpg',
+                      'image':
+                          'https://sdcdn.io/mc/mc_sku_S65QY5_3000x3000_0S.png?options=BackgroundColor=F9F9F9&width=650px&height=750px',
                       'name': 'Pink Lipstick',
                       'price': 70,
                     },
 
                     {
-                      'image': 'assets/images/cream.jpg',
+                      'image':
+                          'https://zynah.me/cdn/shop/files/HyaluCollagenCleansingFoam-ZYNAH.png?v=1722264580',
                       'name': 'Cleansing Foam',
                       'price': 48,
                     },
@@ -237,7 +247,7 @@ class HomeView extends StatelessWidget {
                   return Column(
                     children: [
                       Expanded(
-                        child: Image.asset(
+                        child: Image.network(
                           products[index]['image'],
                           height: 169,
                           width: 161,

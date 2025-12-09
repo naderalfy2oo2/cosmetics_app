@@ -71,7 +71,7 @@ class ShoppingCartView extends StatelessWidget {
                 ),
 
                 buildCartItem(
-                  image: 'assets/images/roge.jpg',
+                  image: 'assets/images/home4.jpg',
                   title: "Channel",
                   subtitle: "L’eau de perfum N5",
                   price: "15,000 EGP",

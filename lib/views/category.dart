@@ -43,22 +43,25 @@ class CategoryView extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/brendle.jpg',
-                      height: 69,
-                      width: 64,
-                    ),
-                    SizedBox(width: 12),
-                    Spacer(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Image.network(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXL3tZdf1FNxqe9UAZm5-gfRJttAwN_xXTkQ&s',
+                        height: 69,
+                        width: 64,
+                      ),
 
-                    Text('Bundles'),
+                      Text('Bundles'),
+                      Spacer(),
 
-                    SizedBox(width: 204),
-
-                    IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
-                  ],
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.play_arrow),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
@@ -68,32 +71,8 @@ class CategoryView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/pervin.jpg',
-                      height: 69,
-                      width: 64,
-                    ),
-                    SizedBox(width: 12),
-
-                    Spacer(),
-
-                    Text('perfumes'),
-
-                    SizedBox(width: 204),
-
-                    IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
-                  ],
-                ),
-              ),
-
-              Divider(),
-
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/home2.jpg',
+                    Image.network(
+                      'https://perfume-egypt.com/cdn/shop/files/rn-image-picker_lib_temp_666b7330-e11f-4988-ab28-bde928dfaeef_533x.jpg?v=1725650241',
                       height: 69,
                       width: 64,
                     ),
@@ -113,8 +92,29 @@ class CategoryView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/cream.jpg',
+                    Image.network(
+                      'https://glam.ph/cdn/shop/articles/shutterstock_1408306232.jpg?v=1730275754',
+                      height: 69,
+                      width: 64,
+                    ),
+                    SizedBox(width: 12),
+
+                    Text('perfumes'),
+                    Spacer(),
+
+                    IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
+                  ],
+                ),
+              ),
+
+              Divider(),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxp_1tiI2IPRFHDL9QahTt5cBhtM1hy-Q3eg&s',
                       height: 69,
                       width: 64,
                     ),
@@ -135,8 +135,8 @@ class CategoryView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/Gifts.jpg',
+                    Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc_ZdCK10zkP5bxbFMndRF-E33pCYY6ABgiw&s',
                       height: 69,
                       width: 64,
                     ),
@@ -144,7 +144,6 @@ class CategoryView extends StatelessWidget {
 
                     Text('Gifts'),
 
-                    SizedBox(width: 204),
                     Spacer(),
 
                     IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),

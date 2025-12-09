@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CheckOutView extends StatelessWidget {
   const CheckOutView({super.key});
@@ -46,12 +47,15 @@ class CheckOutView extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/locationmansoura.jpg',
-                      height: 140,
-                      width: 120,
-                      fit: BoxFit.cover,
+                    Flexible(
+                      child: GoogleMap(
+                        initialCameraPosition: CameraPosition(
+                          target: LatLng(31.0409, 31.3785),
+                          zoom: 19,
+                        ),
+                      ),
                     ),
+
                     const SizedBox(width: 16),
 
                     Expanded(
