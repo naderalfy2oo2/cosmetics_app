@@ -1,4 +1,4 @@
-import 'package:cosmetics/views/category.dart';
+import 'package:cosmetics/views/cateories.dart';
 import 'package:cosmetics/views/profile.dart';
 import 'package:cosmetics/views/shopping_cart.dart';
 import 'package:flutter/material.dart';

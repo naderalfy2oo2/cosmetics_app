@@ -11,7 +11,10 @@ class CheckOutView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
           centerTitle: true,
+          elevation: 100,
+          surfaceTintColor: Colors.transparent,
           title: const Text(
             'CheckOut',
             style: TextStyle(color: Color(0xff434C6D)),
@@ -20,6 +23,8 @@ class CheckOutView extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.arrow_back_ios, color: Color(0xff434C6D)),
           ),
+
+          titleTextStyle: TextStyle(color: Color(0xff29D3DA1C)),
         ),
 
         body: SingleChildScrollView(

@@ -1,4 +1,4 @@
-import 'package:cosmetics/views/splash.dart';
+import 'package:cosmetics/views/cateories.dart';
 
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,6 @@ class CosmeticsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashView());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: CategoryView());
   }
 }
