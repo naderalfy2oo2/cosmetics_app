@@ -137,7 +137,7 @@ class _LoginviewState extends State<Loginview> {
                     onPressed: () {
                       Navigator. pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => SignInView()),
+                        MaterialPageRoute(builder: (context) => HomeView()),
                       );
                     },
                     child: Text('Login', style: TextStyle(color: Colors.white)),
