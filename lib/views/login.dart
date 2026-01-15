@@ -131,9 +131,52 @@ class _LoginviewState extends State<Loginview> {
                     ),
                   ),
 
+<<<<<<< HEAD
                   Align(
                     alignment: AlignmentGeometry.centerRight,
                     child: TextButton(
+=======
+                Align(
+                  alignment: AlignmentGeometry.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forget Password?',
+                      style: TextStyle(color: Colors.pinkAccent),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 43),
+
+                SizedBox(
+                  width: 268,
+                  height: 65,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(
+                        Color(0xffD75D72),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator. pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeView()),
+                      );
+                    },
+                    child: Text('Login', style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+
+                SizedBox(height: 86),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Don’t have an account?'),
+
+                    TextButton(
+>>>>>>> 43d7b5a3f664d9f95ebdaaa980693fdd92657280
                       onPressed: () {},
                       child: Text(
                         'Forget Password?',
