@@ -1,5 +1,4 @@
-import 'package:cosmetics/views/api_caregory.dart';
-
+import 'package:cosmetics/views/api_category.dart';
 import 'package:flutter/material.dart';
 
 class CategoryView extends StatefulWidget {
@@ -93,3 +92,4 @@ class _CategoryViewState extends State<CategoryView> {
     );
   }
 }
+

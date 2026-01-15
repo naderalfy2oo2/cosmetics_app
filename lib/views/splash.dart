@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cosmetics/components/app_Image.dart';
 import 'package:cosmetics/views/onboarding0.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,8 @@ class _SplashViewState extends State<SplashView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/splash.png'),
+              //Image.asset('assets/images/splash.png'),
+              AppImage(image: 'splash.png'),
 
               SizedBox(height: 16),
 

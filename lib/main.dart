@@ -1,4 +1,4 @@
-import 'package:cosmetics/views/cateories.dart';
+import 'package:cosmetics/views/login.dart';
 
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,10 @@ class CosmeticsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: CategoryView());
+    return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xffD9D9D9)),
+      debugShowCheckedModeBanner: false,
+      home: Loginview(),
+    );
   }
 }

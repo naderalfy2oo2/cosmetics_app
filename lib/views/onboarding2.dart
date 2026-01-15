@@ -1,5 +1,4 @@
 import 'package:cosmetics/views/login.dart';
-
 import 'package:flutter/material.dart';
 
 class OnboardingView2 extends StatelessWidget {
