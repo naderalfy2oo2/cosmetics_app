@@ -1,5 +1,4 @@
-import 'package:cosmetics/views/login.dart';
-
+import 'package:cosmetics/views/signIn.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class CosmeticsApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0xffD9D9D9)),
       debugShowCheckedModeBanner: false,
-      home: Loginview(),
+      home: SignInView(),
     );
   }
 }

@@ -1,9 +1,18 @@
-import 'package:cosmetics/views/home.dart';
+import 'package:cosmetics/components/app_Image.dart';
+import 'package:cosmetics/views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class CreatePasswordView extends StatelessWidget {
+class CreatePasswordView extends StatefulWidget {
   const CreatePasswordView({super.key});
+
+  @override
+  State<CreatePasswordView> createState() => _CreatePasswordViewState();
+}
+
+class _CreatePasswordViewState extends State<CreatePasswordView> {
+  bool _isObscure = false;
+  bool _isVisiblePassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +22,8 @@ class CreatePasswordView extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                Image.asset('assets/images/splash.png', height: 62, width: 67),
+                //Image.asset('assets/images/splash.png', height: 62, width: 67),
+                AppImage(image: "splash.png"),
 
                 SizedBox(height: 40),
 
@@ -27,20 +37,44 @@ class CreatePasswordView extends StatelessWidget {
                   ),
                 ),
 
-                Text(
-                  'The password should have at least\n                  6 characters.',
+                Center(
+                  child: Text(
+                    'The password should have at least\n6 characters.',
+                  ),
                 ),
 
                 SizedBox(height: 25),
 
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: TextFormField(
+                //     decoration: InputDecoration(
+                //       labelText: 'New Password',
+                //       suffixIcon: IconButton(
+                //         onPressed: () {},
+                //         icon: Icon(Icons.visibility),
+                //       ),
+                //       border: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(20),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    obscureText: !_isObscure,
                     decoration: InputDecoration(
                       labelText: 'New Password',
                       suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -54,11 +88,20 @@ class CreatePasswordView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    obscureText: !_isVisiblePassword,
                     decoration: InputDecoration(
-                      labelText: 'Confirm Password',
+                      labelText: 'New Password',
                       suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _isVisiblePassword = !_isVisiblePassword;
+                          });
+                        },
+                        icon: Icon(
+                          _isVisiblePassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -119,11 +162,12 @@ class CreatePasswordView extends StatelessWidget {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Navigator.push(
+                                      Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => HomeView(),
+                                          builder: (_) => Loginview(),
                                         ),
+                                        (route) => false,
                                       );
                                     },
                                     child: Text(

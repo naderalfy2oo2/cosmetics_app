@@ -1,3 +1,4 @@
+import 'package:cosmetics/components/app_Image.dart';
 import 'package:cosmetics/views/create_password.dart';
 
 import 'package:flutter/material.dart';
@@ -22,11 +23,12 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/images/splash.png',
-                    height: 62,
-                    width: 67,
-                  ),
+                  // Image.asset(
+                  //   'assets/images/splash.png',
+                  //   height: 62,
+                  //   width: 67,
+                  // ),
+                  AppImage(image: "splash.png"),
 
                   SizedBox(height: 40),
 

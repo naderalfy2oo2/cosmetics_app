@@ -1,5 +1,3 @@
-import 'package:cosmetics/views/forget_password.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:lottie/lottie.dart';
@@ -135,6 +133,7 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
                                           fit: BoxFit.cover,
                                         ),
 
+                                        // AppImage(image: "sucess.json"),
                                         SizedBox(height: 10),
 
                                         Text(
@@ -205,14 +204,7 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
                   height: 65,
                   width: 268,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ForgetPasswordView(),
-                        ),
-                      );
-                    },
+                    onPressed: () {},
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
                         Colors.pinkAccent,
