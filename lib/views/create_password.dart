@@ -1,18 +1,12 @@
 import 'package:cosmetics/components/app_Image.dart';
 import 'package:cosmetics/views/login.dart';
+import 'package:cosmetics/widget/textformfield.dart';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class CreatePasswordView extends StatefulWidget {
+class CreatePasswordView extends StatelessWidget {
   const CreatePasswordView({super.key});
-
-  @override
-  State<CreatePasswordView> createState() => _CreatePasswordViewState();
-}
-
-class _CreatePasswordViewState extends State<CreatePasswordView> {
-  bool _isObscure = false;
-  bool _isVisiblePassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +31,8 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
                   ),
                 ),
 
-                Center(
+                Align(
+                  alignment: AlignmentGeometry.center,
                   child: Text(
                     'The password should have at least\n6 characters.',
                   ),
@@ -45,70 +40,9 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
 
                 SizedBox(height: 25),
 
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: TextFormField(
-                //     decoration: InputDecoration(
-                //       labelText: 'New Password',
-                //       suffixIcon: IconButton(
-                //         onPressed: () {},
-                //         icon: Icon(Icons.visibility),
-                //       ),
-                //       border: OutlineInputBorder(
-                //         borderRadius: BorderRadius.circular(20),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    obscureText: !_isObscure,
-                    decoration: InputDecoration(
-                      labelText: 'New Password',
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _isObscure = !_isObscure;
-                          });
-                        },
-                        icon: Icon(
-                          _isObscure ? Icons.visibility : Icons.visibility_off,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                ),
+                Textformfield(label: 'New Password', isObscure: true),
 
-                SizedBox(height: 16),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    obscureText: !_isVisiblePassword,
-                    decoration: InputDecoration(
-                      labelText: 'New Password',
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _isVisiblePassword = !_isVisiblePassword;
-                          });
-                        },
-                        icon: Icon(
-                          _isVisiblePassword
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                ),
+                textform(label: 'Confirm Password', isVisiblePassword: true),
 
                 SizedBox(height: 72),
 
