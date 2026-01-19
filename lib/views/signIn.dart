@@ -1,5 +1,5 @@
 
-import 'package:cosmetics/components/app_Image.dart';
+import 'package:cosmetics/core/app_Image.dart';
 import 'package:cosmetics/views/api_register.dart';
 import 'package:cosmetics/views/verify_code.dart';
 import 'package:flutter/material.dart';

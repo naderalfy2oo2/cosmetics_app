@@ -1,4 +1,4 @@
-import 'package:cosmetics/components/app_Image.dart';
+import 'package:cosmetics/core/app_Image.dart';
 import 'package:cosmetics/views/create_password.dart';
 
 import 'package:flutter/material.dart';

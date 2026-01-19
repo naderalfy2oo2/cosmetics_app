@@ -1,5 +1,5 @@
 import 'package:cosmetics/views/check_out.dart';
-import 'package:cosmetics/widget/build_item.dart';
+import 'package:cosmetics/core/build_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cosmetics/components/app_Image.dart';
+import 'package:cosmetics/core/app_Image.dart';
 import 'package:cosmetics/views/onboarding0.dart';
 import 'package:flutter/material.dart';
 

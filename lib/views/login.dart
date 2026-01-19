@@ -1,8 +1,8 @@
-import 'package:cosmetics/components/app_Image.dart';
+import 'package:cosmetics/core/app_Image.dart';
 import 'package:cosmetics/views/api_login.dart';
 import 'package:cosmetics/views/forget_password.dart';
 import 'package:cosmetics/views/home.dart';
-import 'package:cosmetics/widget/dropdown_Button.dart';
+import 'package:cosmetics/core/dropdown_Button.dart';
 import 'package:flutter/material.dart';
 
 class Loginview extends StatefulWidget {
