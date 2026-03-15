@@ -1,13 +1,54 @@
+import 'package:cosmetics/models/productModel.dart';
+import 'package:cosmetics/models/sliderModel.dart';
 import 'package:cosmetics/views/cateories.dart';
+import 'package:cosmetics/core/dio_helper.dart';
 import 'package:cosmetics/views/profile.dart';
 import 'package:cosmetics/views/shopping_cart.dart';
+
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+List<SliderModel>? list;
+
+class _HomeViewState extends State<HomeView> {
+  Future<void> getData() async {
+    final resp = await DioHelper.getData(path: "/api/Sliders");
+    print(resp.data);
+    list = (resp.data as List<dynamic>)
+        .map((e) => SliderModel.fromJson(e))
+        .toList();
+
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+    comeData();
+  }
+
+  List<ListProduct>? listData;
+  Future<void> comeData() async {
+    final response = await DioHelper.getData(path: "/api/Products");
+    print(response.data);
+    listData = (response.data as List<dynamic>)
+        .map((e) => ListProduct.fromJson(e))
+        .toList();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (list == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -33,21 +74,39 @@ class HomeView extends StatelessWidget {
         ),
 
         body: SingleChildScrollView(
+          // child: list == null
+          //     ? CircularProgressIndicator()
+          //     : Column(
           child: Column(
             children: [
               Stack(
                 children: [
+                  // Container(
+                  //   width: double.infinity,
+                  //   height: 300,
+
+                  //   decoration: BoxDecoration(
+                  //     image: DecorationImage(
+                  //       image: NetworkImage(list![0].imageUrl),
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //   ),
+                  // ),
                   Container(
                     width: double.infinity,
                     height: 300,
+                    child: Image.network(
+                      list![0].imageUrl,
+                      fit: BoxFit.cover,
 
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYSymcdSazaUOstbVoaInRVhyC4o9wVXTILA&s',
-                        ),
-                        fit: BoxFit.cover,
-                      ),
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey.shade200,
+                          child: Center(
+                            child: Icon(Icons.broken_image, size: 50),
+                          ),
+                        );
+                      },
                     ),
                   ),
 
@@ -128,7 +187,8 @@ class HomeView extends StatelessWidget {
               ),
 
               GridView.builder(
-                itemCount: 4,
+                itemCount: listData?.length ?? 0,
+
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.all(8),
@@ -139,50 +199,34 @@ class HomeView extends StatelessWidget {
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) {
-                  List<Map<String, dynamic>> products = [
-                    {
-                      'image':
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNfOOB51KYeAcnIGhgk5zsnGAU-I_qN48kDQ&s',
-                      'name': 'Face tint / lip tint',
-                      'price': 99,
-                    },
-                    {
-                      'image':
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr-gckYz5b5R67F8yIiJw8sPn3sm8-3TtnGA&s',
-                      'name': 'Athe Red lipstick',
-                      'price': 129,
-                    },
-                    {
-                      'image':
-                          'https://ramfabeauty.com/cdn/shop/files/lash-plumping-mascara-golden-rose-750162.jpg?v=1726724148',
-                      'name': 'Mascara for lashes',
-                      'price': 79,
-                    },
-
-                    {
-                      'image':
-                          'https://cdn.shopify.com/s/files/1/0582/2885/files/1025_Holiday_2025_LLEM_Brynn_Product-With-Swatch.jpg?auto=format&v=1759272281',
-                      'name': 'Mascara for lashes',
-                      'price': 79,
-                    },
-                  ];
+                  final product = listData![index];
 
                   return Column(
                     children: [
                       Expanded(
                         child: Image.network(
-                          products[index]['image'],
+                          product.imageUrl,
+
                           height: 169,
                           width: 161,
+
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey.shade200,
+                              child: Center(
+                                child: Icon(Icons.broken_image, size: 50),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Text(
-                        products[index]['name'],
+                        product.name,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
 
                       Text(
-                        "${products[index]['price']} EGP",
+                        "${product.price}",
                         style: TextStyle(color: Colors.blueGrey),
                       ),
                     ],

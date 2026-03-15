@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DropdownButtonPhone extends StatefulWidget {
-  final List<String> phones;
-  final String initialValue;
+  final String selectedCountryCode;
   final ValueChanged<String> onChanged;
 
   const DropdownButtonPhone({
     super.key,
-    required this.phones,
-    required this.initialValue,
+    required this.selectedCountryCode,
     required this.onChanged,
   });
 
@@ -17,27 +15,28 @@ class DropdownButtonPhone extends StatefulWidget {
 }
 
 class _DropdownButtonPhoneState extends State<DropdownButtonPhone> {
-  late String currentPhone;
+  List<String> phone = ['+20', '+099', '+0123'];
+  late String selectedCountrycode;
 
   @override
   void initState() {
     super.initState();
-    currentPhone = widget.initialValue;
+    selectedCountrycode = phone.first;
+    widget.onChanged.call(widget.selectedCountryCode);
   }
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: currentPhone,
-      items: widget.phones
+      value: selectedCountrycode,
+      items: phone
           .map((e) => DropdownMenuItem(value: e, child: Text(e)))
           .toList(),
       onChanged: (value) {
         if (value == null) return;
-        setState(() {
-          currentPhone = value;
-        });
-        widget.onChanged(value);
+        selectedCountrycode = value;
+        widget.onChanged.call(widget.selectedCountryCode);
+        setState(() {});
       },
     );
   }

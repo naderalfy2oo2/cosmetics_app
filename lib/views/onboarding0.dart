@@ -1,84 +1,111 @@
-import 'package:cosmetics/views/onboarding1.dart';
 import 'package:flutter/material.dart';
 
-class OnBoardingView0 extends StatelessWidget {
-  const OnBoardingView0({super.key});
+class OnboardingView extends StatefulWidget {
+  const OnboardingView({super.key});
 
+  @override
+  State<OnboardingView> createState() => _OnboardingViewState();
+}
+
+class _OnboardingViewState extends State<OnboardingView> {
+  int current = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: AlignmentGeometry.topRight,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => OnboardingViwe1(),
-                      ),
-                    );
-                  },
-                  child: Text('Skip'),
-                ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+
+          children: [
+            current == 2
+                ? SizedBox()
+                : Align(
+                    alignment: AlignmentGeometry.topRight,
+                    child: TextButton(
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => OnboardingViwe1(),
+                        //   ),
+                        // );
+                      },
+                      child: Text('Skip'),
+                    ),
+                  ),
+
+            Center(
+              child: Image.asset(list[current].image, height: 300, width: 300),
+            ),
+            SizedBox(height: 27.92),
+
+            Text(
+              list[current].title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff434C6D),
               ),
+            ),
 
-              Center(
-                child: Image.asset(
-                  'assets/images/on_boarding0.png',
-                  height: 300,
-                  width: 300,
-                ),
+            SizedBox(height: 10),
+
+            Align(
+              alignment: AlignmentGeometry.center,
+              child: Text(list[current].subTitle),
+            ),
+
+            SizedBox(height: 30),
+
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xff434C6D),
+                borderRadius: BorderRadius.circular(4),
               ),
-              SizedBox(height: 27.92),
-
-              Text(
-                'WELCOME!',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff434C6D),
-                ),
+              height: 50,
+              width: 50,
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    if (current < 2) {
+                      current++;
+                      print(current);
+                    }
+                  });
+                },
+                icon: Icon(Icons.arrow_forward_ios, color: Colors.white),
               ),
-
-              SizedBox(height: 10),
-
-              Align(
-                alignment: AlignmentGeometry.center,
-                child: Text(
-                  'Makeup has the power to transform your \nmood and empowers you to be a more \n                    confident person.',
-                ),
-              ),
-
-              SizedBox(height: 30),
-
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xff434C6D),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                height: 50,
-                width: 50,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => OnboardingViwe1(),
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.arrow_forward_ios, color: Colors.white),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+class Model {
+  final String image;
+  final String title;
+  final String subTitle;
+
+  Model({required this.image, required this.title, required this.subTitle});
+}
+
+final list = [
+  Model(
+    image: 'assets/images/on_boarding0.png',
+    title: 'WELCOME!',
+    subTitle: "Allow notifications for new makeup & cosmetics offers.",
+  ),
+  Model(
+    image: 'assets/images/on_boarding1.png',
+    title: 'SEARCH & PICK',
+    subTitle:
+        "We have dedicated set of products and routines hand picked for every skin type.",
+  ),
+  Model(
+    image: 'assets/images/on_boarding2.png',
+    title: "PUCH NOTIFICATIONS ",
+    subTitle: "Allow notifications for new makeup & cosmetics offers.",
+  ),
+];

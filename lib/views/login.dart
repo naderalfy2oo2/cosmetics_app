@@ -13,14 +13,21 @@ class Loginview extends StatefulWidget {
 }
 
 class _LoginviewState extends State<Loginview> {
-  final _fromKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController Phone_Controller = TextEditingController();
   final TextEditingController Password_Controller = TextEditingController();
-  List<String> Phone = ['+02', '+099', '+0123'];
+  List<String> Phone = ['+20', '+099', '+0123'];
 
-  String currentPhone = '+02';
+  String selectedCountryCode = '+20';
 
   bool isLoading = false;
+
+  @override
+  void dispose() {
+    Phone_Controller.dispose();
+    Password_Controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,7 @@ class _LoginviewState extends State<Loginview> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Form(
-            key: _fromKey,
+            key: _formKey,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -58,10 +65,9 @@ class _LoginviewState extends State<Loginview> {
                   Row(
                     children: [
                       DropdownButtonPhone(
-                        phones: Phone,
-                        initialValue: currentPhone,
+                        selectedCountryCode: selectedCountryCode,
                         onChanged: (value) {
-                          currentPhone = value;
+                          selectedCountryCode = value;
                         },
                       ),
 
@@ -106,7 +112,7 @@ class _LoginviewState extends State<Loginview> {
                       height: 47,
                       child: TextFormField(
                         controller: Password_Controller,
-                        obscureText: true,
+                        obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Your Password',
 
@@ -133,7 +139,7 @@ class _LoginviewState extends State<Loginview> {
                   ),
 
                   Align(
-                    alignment: AlignmentGeometry.centerRight,
+                    alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -160,13 +166,13 @@ class _LoginviewState extends State<Loginview> {
                       onPressed: isLoading
                           ? null
                           : () async {
-                              if (!_fromKey.currentState!.validate()) return;
+                              if (!_formKey.currentState!.validate()) return;
                               setState(() {
                                 isLoading = true;
                               });
 
                               final result = await LoginApi.login(
-                                countryCode: currentPhone,
+                                countryCode: selectedCountryCode,
                                 phoneNumber: Phone_Controller.text.trim(),
                                 password: Password_Controller.text.trim(),
                               );
@@ -193,8 +199,13 @@ class _LoginviewState extends State<Loginview> {
                               );
                             },
                       child: isLoading
-                          ? const CircularProgressIndicator(
-                              color: Colors.pinkAccent,
+                          ? const SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.pinkAccent,
+                              ),
                             )
                           : const Text('Login'),
                     ),

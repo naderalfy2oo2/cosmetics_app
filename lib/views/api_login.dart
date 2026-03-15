@@ -14,6 +14,9 @@ class LoginApi {
     required String password,
   }) async {
     try {
+      print('amr countryCode $countryCode');
+      print('amr phoneNumber $phoneNumber');
+      print('amr password $password');
       final response = await dio.post(
         '/api/Auth/login',
         data: {

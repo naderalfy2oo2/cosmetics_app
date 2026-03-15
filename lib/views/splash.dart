@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cosmetics/core/app_Image.dart';
 import 'package:cosmetics/views/onboarding0.dart';
+
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
     Timer(Duration(seconds: 3), () {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => OnBoardingView0()),
+        MaterialPageRoute(builder: (context) => OnboardingView()),
         (routes) => false,
       );
     });

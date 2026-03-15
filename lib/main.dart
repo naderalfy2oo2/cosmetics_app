@@ -1,4 +1,4 @@
-import 'package:cosmetics/views/create_password.dart';
+import 'package:cosmetics/views/home.dart';
 
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class CosmeticsApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0xffD9D9D9)),
       debugShowCheckedModeBanner: false,
-      home: CreatePasswordView(),
+      home: HomeView(),
     );
   }
 }
