@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    if (list == null) {
+    if (list == null || list!.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
     return SafeArea(

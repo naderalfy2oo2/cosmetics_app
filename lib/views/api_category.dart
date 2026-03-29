@@ -54,15 +54,12 @@
 import 'package:dio/dio.dart';
 
 class ApiServices {
-  final Dio dio = Dio(
-    BaseOptions(
-      baseUrl:
-          'https://cosmatics-302b5-default-rtdb.europe-west1.firebasedatabase.app/',
-    ),
-  );
+  final Dio dio = Dio(BaseOptions(baseUrl: 'https://cosmatics.growfet.com'));
 
   Future<List<CategoryData>> getCategories() async {
-    final response = await dio.get('categories.json');
+    final response = await dio.get(
+      'https://cosmatics.growfet.com/api/Categories',
+    );
 
     final List data = response.data;
 
