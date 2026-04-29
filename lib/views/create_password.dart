@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/app_Image.dart';
-import 'package:cosmetics/views/login.dart';
+import 'package:cosmetics/auth/login.dart';
 import 'package:cosmetics/widget/textformfield.dart';
 
 import 'package:flutter/material.dart';
@@ -99,7 +99,7 @@ class CreatePasswordView extends StatelessWidget {
                                       Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (_) => Loginview(),
+                                          builder: (_) => Login(),
                                         ),
                                         (route) => false,
                                       );

@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 
 class DioHelper {
+  // final widget path;
   static const basURL = "https://cosmatics.growfet.com";
 
-  static Future<CustomResponse> getData({String path = ""}) async {
+  static Future<CustomResponse> getData({String path = ''}) async {
     try {
       final resp = await Dio(
         BaseOptions(
@@ -14,6 +15,7 @@ class DioHelper {
           },
         ),
       ).get(path);
+      print('Nader999');
       print(resp.data);
       return CustomResponse(isSucess: true, data: resp.data);
     } on DioException catch (ex) {

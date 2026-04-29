@@ -1,69 +1,80 @@
-// import 'package:dio/dio.dart';
-
-// class ApiService {
-//   late final Dio dio;
-//   ApiService() {
-//     dio = Dio(
-//       BaseOptions(
-//         baseUrl:
-//             "https://cosmatics-302b5-default-rtdb.europe-west1.firebasedatabase.app/",
-//       ),
-//     );
-//     Future<List<CategoyData>> getCategories() async {
-//       final response = await dio.get('categories.json');
-//       List<dynamic> CategoriesList = response.data["result"];
-//       List<CategoyData> CategriesList = [];
-
-//       for(var categoryItem in CategriesList){
-//         CategriesList.add(categoryItem);
-
-//     }
-
-//   }
-// }
-
-// import 'package:dio/dio.dart';
-
-// class ApiServices {
-//   late final Dio dio;
-//   ApiServices() {
-//     dio = Dio(
-//       BaseOptions(
-//         baseUrl:
-//             'https://cosmatics-302b5-default-rtdb.europe-west1.firebasedatabase.app/',
-//       ),
-//     );
-//   }
-
-//   Future<List<CategoryData>> getCategories() async {
-//     final response = await dio.get(
-//       'categories.json',
-//       queryParameters: {'api_key': '2001486a0f63e9e4ef9c4da157ef37cd'},
-//     );
-
-//     final List categoryList = response.data;
-//     List<CategoryData> categoriesList = [];
-
-//     for (var categoryItem in categoryList) {
-//       categoriesList.add(CategoryData.fromJson(categoryItem));
-//     }
-//     return categoriesList;
-//   }
-// }
-
 import 'package:dio/dio.dart';
+import 'package:cosmetics/models/productModel.dart';
+import 'package:cosmetics/models/sliderModel.dart';
 
 class ApiServices {
   final Dio dio = Dio(BaseOptions(baseUrl: 'https://cosmatics.growfet.com'));
 
+  Future<List<SliderModel>> getSliders() async {
+    try {
+      final response = await dio.get('/api/Sliders');
+      final data = response.data;
+
+      if (data == null) return [];
+
+      if (data is List) {
+        return data.map((e) => SliderModel.fromJson(e)).toList();
+      }
+
+      if (data is Map && data['data'] is List) {
+        return (data['data'] as List)
+            .map((e) => SliderModel.fromJson(e))
+            .toList();
+      }
+
+      return [];
+    } catch (e) {
+      print("Slider Error: $e");
+      return [];
+    }
+  }
+
+  Future<List<ListProduct>> getProducts() async {
+    try {
+      final response = await dio.get('/api/Products');
+      final data = response.data;
+
+      if (data == null) return [];
+
+      if (data is List) {
+        return data.map((e) => ListProduct.fromJson(e)).toList();
+      }
+
+      if (data is Map && data['data'] is List) {
+        return (data['data'] as List)
+            .map((e) => ListProduct.fromJson(e))
+            .toList();
+      }
+
+      return [];
+    } catch (e) {
+      print("Product Error: $e");
+      return [];
+    }
+  }
+
   Future<List<CategoryData>> getCategories() async {
-    final response = await dio.get(
-      'https://cosmatics.growfet.com/api/Categories',
-    );
+    try {
+      final response = await dio.get('/api/Categories');
+      final data = response.data;
 
-    final List data = response.data;
+      if (data == null) return [];
 
-    return data.map((e) => CategoryData.fromJson(e)).toList();
+      if (data is List) {
+        return data.map((e) => CategoryData.fromJson(e)).toList();
+      }
+
+      if (data is Map && data['data'] is List) {
+        return (data['data'] as List)
+            .map((e) => CategoryData.fromJson(e))
+            .toList();
+      }
+
+      return [];
+    } catch (e) {
+      print("Category Error: $e");
+      return [];
+    }
   }
 }
 
@@ -76,45 +87,9 @@ class CategoryData {
 
   factory CategoryData.fromJson(Map<String, dynamic> json) {
     return CategoryData(
-      id: json['id'],
-      name: json['name'],
-      image: json['image'],
+      id: json['id'] ?? 0,
+      name: json['name'] ?? "",
+      image: json['image'] ?? "",
     );
   }
 }
-
-// class CategoryData {
-//   CategoryData({required this.result});
-//   late final List<Result> result;
-
-//   CategoryData.fromJson(Map<String, dynamic> json) {
-//     result = List.from(json['result']).map((e) => Result.fromJson(e)).toList();
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final _data = <String, dynamic>{};
-//     _data['result'] = result.map((e) => e.toJson()).toList();
-//     return _data;
-//   }
-// }
-
-// class Result {
-//   Result({required this.id, required this.image, required this.name});
-//   late final int id;
-//   late final String image;
-//   late final String name;
-
-//   Result.fromJson(Map<String, dynamic> json) {
-//     id = json['id'];
-//     image = json['image'];
-//     name = json['name'];
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final _data = <String, dynamic>{};
-//     _data['id'] = id;
-//     _data['image'] = image;
-//     _data['name'] = name;
-//     return _data;
-//   }
-// }

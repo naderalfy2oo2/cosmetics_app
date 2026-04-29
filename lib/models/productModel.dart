@@ -1,19 +1,38 @@
 class ListProduct {
-  late final int id;
-  late final String name;
-  late final String description;
-  late final double price;
-  late final int stock;
-  late final String imageUrl;
-  late final Null categoryId;
+  final int id;
+  final String name;
+  final String description;
+  final double price;
+  final int stock;
+  final String imageUrl;
+  final int? categoryId;
 
-  ListProduct.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    price = json['price'];
-    stock = json['stock'];
-    imageUrl = json['imageUrl'];
-    categoryId = null;
+  ListProduct({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.stock,
+    required this.imageUrl,
+    this.categoryId,
+  });
+
+  factory ListProduct.fromJson(Map<String, dynamic> json) {
+    String img = json['imageUrl'] ?? "";
+
+    // 🔥 لو اللينك مش كامل
+    if (img.isNotEmpty && !img.startsWith("http")) {
+      img = "https://cosmatics.growfet.com$img";
+    }
+
+    return ListProduct(
+      id: json['id'] ?? 0,
+      name: json['name'] ?? "",
+      description: json['description'] ?? "",
+      price: (json['price'] ?? 0).toDouble(),
+      stock: json['stock'] ?? 0,
+      imageUrl: img,
+      categoryId: json['categoryId'],
+    );
   }
 }
