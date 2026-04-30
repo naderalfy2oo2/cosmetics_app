@@ -1,10 +1,12 @@
-import 'package:cosmetics/views/sucess_dialoug.dart';
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:lottie/lottie.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import 'package:verification_code_field/verification_code_field.dart';
+
+import '../constants/app_image.dart';
 
 class VerifyCode extends StatelessWidget {
   const VerifyCode({super.key});
@@ -16,16 +18,12 @@ class VerifyCode extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Center(
-              child: Image.asset(
-                "assets/images/splash.png",
-                width: 67,
-                height: 62,
-              ),
+              child: AppImage(image: 'splash.png', width: 67.w, height: 62.h),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
 
             Text(
               "Verify Code",
@@ -36,7 +34,7 @@ class VerifyCode extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
 
             Text(
               "We just sent a 4-digit verification code to\nyour email amramer522@gmail.com. Enter \n   the code in the box below to continue.",
@@ -47,7 +45,7 @@ class VerifyCode extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
 
             Padding(
               padding: const EdgeInsets.all(13),
@@ -114,17 +112,17 @@ class VerifyCode extends StatelessWidget {
 
                     decoration: BoxDecoration(color: Color(0xffD9D9D9)),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   SlideCountdownSeparated(duration: Duration(milliseconds: 60)),
                 ],
               ),
             ),
 
-            SizedBox(height: 113),
+            SizedBox(height: 113.h),
 
             SizedBox(
-              width: 268,
-              height: 65,
+              width: 268.w,
+              height: 65.h,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xffD75D72),
@@ -139,18 +137,18 @@ class VerifyCode extends StatelessWidget {
                           borderRadius: BorderRadiusGeometry.circular(10),
                         ),
                         child: Container(
-                          width: 360,
+                          width: 360.w,
                           padding: EdgeInsets.all(46),
-                          height: 500,
+                          height: 500.h,
 
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(height: 30),
+                                SizedBox(height: 30.h),
 
                                 Lottie.asset("assets/lotties/sucess.json"),
 
-                                SizedBox(height: 26),
+                                SizedBox(height: 26.h),
 
                                 Text(
                                   "Account Activated!",
@@ -161,7 +159,7 @@ class VerifyCode extends StatelessWidget {
                                   ),
                                 ),
 
-                                SizedBox(height: 8),
+                                SizedBox(height: 8.h),
                                 Text(
                                   "Congratulations! Your account\nhas been successfully activated",
                                   style: TextStyle(
@@ -171,7 +169,7 @@ class VerifyCode extends StatelessWidget {
                                   ),
                                 ),
 
-                                SizedBox(height: 23),
+                                SizedBox(height: 23.h),
 
                                 ElvatedbuttonWidget(title: "Go to home"),
                               ],

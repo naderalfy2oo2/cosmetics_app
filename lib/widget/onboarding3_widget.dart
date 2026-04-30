@@ -1,4 +1,6 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Onboarding3Widget extends StatelessWidget {
   const Onboarding3Widget({super.key});
@@ -9,13 +11,15 @@ class Onboarding3Widget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Image.asset(
-            "assets/images/onboarding3.png",
-            height: 300,
-            width: 300,
+          // child: Image.asset(
+          child: AppImage(
+            image: 'onboarding3.png',
+
+            height: 300.h,
+            width: 300.w,
           ),
         ),
-        SizedBox(height: 46),
+        SizedBox(height: 46.h),
 
         Text(
           "PUCH NOTIFICATIONS ",
@@ -26,7 +30,7 @@ class Onboarding3Widget extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
 
         Text(
           "Allow notifications for new makeup &\n                cosmetics offers.",
@@ -37,11 +41,11 @@ class Onboarding3Widget extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 30),
+        SizedBox(height: 30.h),
 
         SizedBox(
-          height: 65,
-          width: 268,
+          height: 65.h,
+          width: 268.w,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Color(0xff434C6D)),
             onPressed: () {},

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ElvatedbuttonWidget extends StatelessWidget {
   final String title;
@@ -9,8 +10,8 @@ class ElvatedbuttonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 268,
-      height: 65,
+      width: 268.w,
+      height: 65.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: Color(0xffD75D72)),
 

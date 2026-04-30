@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 class SucessDialoug extends StatelessWidget {
@@ -24,11 +25,11 @@ class SucessDialoug extends StatelessWidget {
                     'Congratulations! Your account\nhas been successfully activated',
                     style: TextStyle(color: Color(0xff8E8EA9)),
                   ),
-                  SizedBox(height: 23),
+                  SizedBox(height: 23.h),
 
                   SizedBox(
-                    height: 60,
-                    width: 268,
+                    height: 60.h,
+                    width: 268.w,
                     child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(

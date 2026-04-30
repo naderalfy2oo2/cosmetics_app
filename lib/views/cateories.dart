@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cosmetics/service/api_category.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});
@@ -52,8 +53,8 @@ class _CategoryViewState extends State<CategoryView> {
               child: item.image.isNotEmpty
                   ? Image.network(
                       item.image,
-                      width: 50,
-                      height: 50,
+                      width: 50.w,
+                      height: 50.h,
                       fit: BoxFit.cover,
                       errorBuilder: (_, __, ___) =>
                           const Icon(Icons.broken_image),

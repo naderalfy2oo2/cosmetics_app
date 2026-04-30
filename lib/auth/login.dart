@@ -1,3 +1,4 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +32,8 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               SizedBox(height: 40.h),
-              Image.asset("assets/images/login.png", width: 284, height: 227),
+
+              AppImage(image: 'login.png', width: 284.w, height: 227.h),
               SizedBox(height: 25.h),
 
               Text(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../constants/app_image.dart';
 
 class Onboarding2Widget extends StatelessWidget {
   const Onboarding2Widget({super.key});
@@ -27,13 +30,9 @@ class Onboarding2Widget extends StatelessWidget {
 
         Column(
           children: [
-            Image.asset(
-              "assets/images/on_boarding2.png",
-              width: 300,
-              height: 300,
-            ),
+            AppImage(image: 'on_boarding2.png', width: 300.w, height: 300.h),
 
-            SizedBox(height: 28),
+            SizedBox(height: 28.h),
 
             Text(
               "SEARCH & PICK",
@@ -43,18 +42,18 @@ class Onboarding2Widget extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
 
             Text(
               "We have dedicated set of products and\nroutines hand picked for every skin type.",
               style: TextStyle(color: Color(0xff434C6D)),
             ),
 
-            SizedBox(height: 30),
+            SizedBox(height: 30.h),
 
             SizedBox(
-              height: 50,
-              width: 50,
+              height: 50.h,
+              width: 50.w,
               child: IconButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff434C6D),

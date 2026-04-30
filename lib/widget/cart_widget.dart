@@ -1,4 +1,6 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartWidget extends StatelessWidget {
   final String image;
@@ -22,8 +24,8 @@ class CartWidget extends StatelessWidget {
         color: Color(0xffD9D9D9).withValues(alpha: 0.25),
       ),
 
-      width: 176,
-      height: 237,
+      width: 176..w,
+      height: 237.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,10 +37,10 @@ class CartWidget extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                   child: Image.asset(
                     image,
-                    width: 161,
+                    width: 161.w,
 
                     fit: BoxFit.fill,
-                    height: 169,
+                    height: 169.h,
                   ),
                 ),
 
@@ -49,16 +51,17 @@ class CartWidget extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(6),
                       margin: EdgeInsets.all(6),
-                      width: 32,
-                      height: 32,
+                      width: 32.w,
+                      height: 32.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: Color(0xffFFFAFA),
                       ),
-                      child: Image.asset(
-                        "assets/images/basket.png",
-                        width: 16,
-                        height: 16,
+
+                      child: AppImage(
+                        image: 'basket.png',
+                        width: 16.w,
+                        height: 16.h,
                       ),
                     ),
                   ),
@@ -67,7 +70,7 @@ class CartWidget extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 5),
+          SizedBox(height: 5.h),
 
           Text(
             title,
@@ -78,7 +81,7 @@ class CartWidget extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 2),
+          SizedBox(height: 2.h),
 
           Text(
             '\$$price',

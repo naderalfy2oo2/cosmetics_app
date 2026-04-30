@@ -1,5 +1,7 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:cosmetics/widget/cart_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -47,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
           padding: const EdgeInsets.all(13),
           child: Column(
             children: [
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               TextFormField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -65,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
 
-              SizedBox(height: 15),
+              SizedBox(height: 15.h),
 
               Stack(
                 children: [
@@ -74,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
                     child: Image.asset(
                       "assets/images/home.jpg",
                       width: double.infinity,
-                      height: 320,
+                      height: 320.h,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -84,7 +86,7 @@ class _HomeViewState extends State<HomeView> {
                     left: 0,
                     child: Container(
                       width: double.infinity,
-                      height: 151,
+                      height: 151.h,
                       decoration: BoxDecoration(
                         color: Color(0xffE9DCD3).withValues(alpha: 0.5),
                       ),
@@ -124,27 +126,27 @@ class _HomeViewState extends State<HomeView> {
                                   ),
                                 ),
 
-                                SizedBox(width: 12),
+                                SizedBox(width: 12.w),
 
                                 Image.asset(
                                   "assets/images/offer.png",
-                                  width: 55,
-                                  height: 55,
+                                  width: 55.w,
+                                  height: 55.h,
                                 ),
                               ],
                             ),
 
-                            SizedBox(width: 12),
+                            SizedBox(width: 12.w),
 
                             Row(
                               children: [
                                 Image.asset(
                                   "assets/images/offer.png",
-                                  width: 55,
-                                  height: 55,
+                                  width: 55.w,
+                                  height: 55.h,
                                 ),
 
-                                SizedBox(width: 129),
+                                SizedBox(width: 129.w),
                                 Text.rich(
                                   TextSpan(
                                     children: [
@@ -170,7 +172,7 @@ class _HomeViewState extends State<HomeView> {
                                   ),
                                 ),
 
-                                SizedBox(width: 10),
+                                SizedBox(width: 10.w),
                               ],
                             ),
                           ],
@@ -181,7 +183,7 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
 
-              SizedBox(height: 26),
+              SizedBox(height: 26.h),
 
               Align(
                 alignment: AlignmentGeometry.centerLeft,
@@ -216,12 +218,10 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
 
-              SizedBox(height: 17),
+              SizedBox(height: 17.h),
             ],
           ),
         ),
-
-        // floatingActionButton: NavigationBottomView(),
       ),
     );
   }

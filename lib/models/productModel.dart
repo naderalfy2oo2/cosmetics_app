@@ -20,7 +20,6 @@ class ListProduct {
   factory ListProduct.fromJson(Map<String, dynamic> json) {
     String img = json['imageUrl'] ?? "";
 
-    // 🔥 لو اللينك مش كامل
     if (img.isNotEmpty && !img.startsWith("http")) {
       img = "https://cosmatics.growfet.com$img";
     }

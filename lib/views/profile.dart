@@ -1,4 +1,6 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileView extends StatelessWidget {
@@ -17,7 +19,7 @@ class ProfileView extends StatelessWidget {
                     Column(
                       children: [
                         Container(
-                          height: 230,
+                          height: 230.h,
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
@@ -42,13 +44,13 @@ class ProfileView extends StatelessWidget {
                             child: ClipOval(
                               child: Image.network(
                                 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                                height: 96,
-                                width: 96,
+                                height: 96.h,
+                                width: 96.w,
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 16),
+                          SizedBox(height: 16.h),
                           const Text(
                             'Sara Samer Talaat',
                             style: TextStyle(fontSize: 16),
@@ -63,7 +65,7 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/icons/edit_info.svg'),
+                  AppImage(image: 'edit_info.svg'),
                   Text('  Edit Info'),
                   SizedBox(width: 254),
                   Spacer(),
@@ -75,7 +77,7 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/icons/order_history.svg'),
+                  AppImage(image: 'order_history.svg'),
                   Text(' Order History'),
 
                   Spacer(),
@@ -87,10 +89,10 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/icons/wallet.svg'),
+                  AppImage(image: 'wallet.svg'),
                   Text(' Wallet'),
 
-                  SizedBox(width: 254),
+                  SizedBox(width: 254.w),
 
                   Spacer(),
                   Icon(Icons.play_arrow),
@@ -100,9 +102,9 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/icons/settings.svg'),
+                  AppImage(image: 'settings.svg'),
                   Text(' Settings'),
-                  SizedBox(width: 254),
+                  SizedBox(width: 254.w),
 
                   Spacer(),
 
@@ -113,9 +115,9 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/icons/voucher.svg'),
+                  AppImage(image: 'voucher.svg'),
                   Text(' Vocher'),
-                  SizedBox(width: 254),
+                  SizedBox(width: 254.w),
                   Spacer(),
 
                   Icon(Icons.play_arrow),
@@ -127,7 +129,7 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/icons/logout.svg'),
+                  AppImage(image: 'logout.svg'),
                   Text(
                     ' LogOut',
                     style: TextStyle(
@@ -136,17 +138,17 @@ class ProfileView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 254),
+                  SizedBox(width: 254.w),
                   Spacer(),
                 ],
               ),
 
-              SizedBox(height: 200),
+              SizedBox(height: 200.h),
 
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Container(
-                  height: 80,
+                  height: 80.h,
                   decoration: BoxDecoration(
                     color: Color(0xffF7F7F7),
                     borderRadius: BorderRadius.circular(25),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import 'package:verification_code_field/verification_code_field.dart';
 
+import '../constants/app_image.dart';
 import '../widget/elvatedButton_widget.dart';
 
 class VerifyForget extends StatelessWidget {
@@ -29,17 +31,13 @@ class VerifyForget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
 
               Center(
-                child: Image.asset(
-                  "assets/images/splash.png",
-                  width: 67,
-                  height: 62,
-                ),
+                child: AppImage(image: 'splash.png', width: 67.w, height: 62.h),
               ),
 
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
 
               Text(
                 "Verify Code",
@@ -50,7 +48,7 @@ class VerifyForget extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
 
               Text.rich(
                 TextSpan(
@@ -86,7 +84,7 @@ class VerifyForget extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
 
               Padding(
                 padding: const EdgeInsets.all(13),
@@ -153,7 +151,7 @@ class VerifyForget extends StatelessWidget {
 
                       decoration: BoxDecoration(color: Color(0xffD9D9D9)),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     SlideCountdownSeparated(
                       duration: Duration(milliseconds: 60),
                     ),
@@ -161,11 +159,11 @@ class VerifyForget extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 113),
+              SizedBox(height: 113.h),
 
               ElvatedbuttonWidget(title: 'Done'),
 
-              SizedBox(height: 129),
+              SizedBox(height: 129.h),
             ],
           ),
         ),

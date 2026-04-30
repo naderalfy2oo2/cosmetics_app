@@ -1,7 +1,9 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:cosmetics/widget/text_form.dart';
 import 'package:cosmetics/widget/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -31,16 +33,12 @@ class _SigninState extends State<Signin> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
               Center(
-                child: Image.asset(
-                  "assets/images/splash.png",
-                  width: 67,
-                  height: 62,
-                ),
+                child: AppImage(image: 'splash.png', width: 67.w, height: 62.h),
               ),
 
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
 
               Text(
                 "Create Account",
@@ -51,17 +49,17 @@ class _SigninState extends State<Signin> {
                 ),
               ),
 
-              SizedBox(height: 50),
+              SizedBox(height: 50.h),
               TextFormWidget(labeltext: 'Your Name', hinttext: 'Sara Samer'),
 
-              SizedBox(height: 38),
+              SizedBox(height: 38.h),
 
               TextFormWidget(
                 labeltext: 'Email',
                 hinttext: 'amramer522@gmail.com',
               ),
 
-              SizedBox(height: 33),
+              SizedBox(height: 33.h),
 
               Row(
                 children: [
@@ -86,7 +84,7 @@ class _SigninState extends State<Signin> {
                       onChanged: dropdownCallback,
                     ),
                   ),
-                  SizedBox(width: 5),
+                  SizedBox(width: 5.w),
 
                   Expanded(
                     child: Padding(
@@ -114,19 +112,19 @@ class _SigninState extends State<Signin> {
                 ],
               ),
 
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Padding(
                 padding: const EdgeInsets.all(13),
                 child: TextWidget(hintText: 'Create your password'),
               ),
 
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Padding(
                 padding: const EdgeInsets.all(13),
                 child: TextWidget(hintText: 'Confirm password'),
               ),
 
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               ElvatedbuttonWidget(title: 'Next'),
             ],

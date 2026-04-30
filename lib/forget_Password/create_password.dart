@@ -1,7 +1,9 @@
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
+import '../constants/app_image.dart';
 import '../widget/text_widget.dart';
 
 class CreatePassword extends StatelessWidget {
@@ -14,15 +16,11 @@ class CreatePassword extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Center(
-              child: Image.asset(
-                "assets/images/splash.png",
-                width: 67,
-                height: 62,
-              ),
+              child: AppImage(image: 'splash.png', width: 67.w, height: 62.h),
             ),
-            SizedBox(height: 46),
+            SizedBox(height: 46.h),
 
             Text(
               "Create Password",
@@ -32,7 +30,7 @@ class CreatePassword extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
 
             Text(
               "The password should have at least\n                      6 characters",
@@ -43,19 +41,25 @@ class CreatePassword extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 80),
+            SizedBox(height: 80.h),
 
-            TextWidget(hintText: 'Confirm password'),
+            Padding(
+              padding: const EdgeInsets.all(13),
+              child: TextWidget(hintText: 'Confirm password'),
+            ),
 
-            SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
-            TextWidget(hintText: 'New password'),
+            Padding(
+              padding: const EdgeInsets.all(13),
+              child: TextWidget(hintText: 'New password'),
+            ),
 
-            SizedBox(height: 72),
+            SizedBox(height: 72.h),
 
             SizedBox(
-              width: 268,
-              height: 65,
+              width: 268.w,
+              height: 65.h,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xffD75D72),
@@ -70,18 +74,18 @@ class CreatePassword extends StatelessWidget {
                           borderRadius: BorderRadiusGeometry.circular(10),
                         ),
                         child: Container(
-                          width: 360,
+                          width: 360.w,
                           padding: EdgeInsets.all(46),
-                          height: 500,
+                          height: 500.h,
 
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(height: 30),
+                                SizedBox(height: 30.h),
 
                                 Lottie.asset("assets/lotties/sucess.json"),
 
-                                SizedBox(height: 26),
+                                SizedBox(height: 26.h),
 
                                 Text(
                                   "Password Created!",
@@ -92,7 +96,7 @@ class CreatePassword extends StatelessWidget {
                                   ),
                                 ),
 
-                                SizedBox(height: 8),
+                                SizedBox(height: 8.h),
                                 Text(
                                   "Congratulations! Your password\nhas been successfully created",
                                   style: TextStyle(
@@ -102,7 +106,7 @@ class CreatePassword extends StatelessWidget {
                                   ),
                                 ),
 
-                                SizedBox(height: 23),
+                                SizedBox(height: 23.h),
 
                                 ElvatedbuttonWidget(title: "Return to login"),
                               ],

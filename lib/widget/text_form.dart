@@ -18,7 +18,6 @@ class TextFormWidget extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              // style: BorderStyle.solid,
               color: Color(0xff5A669066).withValues(alpha: 0.4),
             ),
           ),

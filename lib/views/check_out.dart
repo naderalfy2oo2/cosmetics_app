@@ -1,5 +1,7 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -40,12 +42,11 @@ class CheckOutView extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
 
               Container(
                 width: double.infinity,
-                height: 140,
+                height: 140.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -61,7 +62,7 @@ class CheckOutView extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(width: 16),
+                    SizedBox(width: 16.w),
 
                     Expanded(
                       child: Column(
@@ -85,12 +86,12 @@ class CheckOutView extends StatelessWidget {
                       ),
                     ),
 
-                    SvgPicture.asset('assets/icons/arrowright2.svg'),
+                    AppImage(image: 'arrow.svg'),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
 
               Text(
                 'Payment Method',
@@ -99,14 +100,21 @@ class CheckOutView extends StatelessWidget {
 
               Container(
                 width: double.infinity,
-                height: 100,
+                height: 100.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   children: [
-                    SvgPicture.asset('assets/icons/meza.svg'),
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: AppImage(
+                        image: 'meza.svg',
+                        width: 30.w,
+                        height: 20.h,
+                      ),
+                    ),
                     SizedBox(width: 7),
                     Text(
                       '**** **** **** 0256',
@@ -114,45 +122,55 @@ class CheckOutView extends StatelessWidget {
                     ),
                     Spacer(),
 
-                    SvgPicture.asset('assets/icons/arrowright2.svg'),
+                    AppImage(image: 'arrow.svg'),
                   ],
                 ),
               ),
 
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
 
               Container(
                 width: double.infinity,
-                height: 100,
+                height: 100.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   children: [
-                    SvgPicture.asset('assets/icons/voucher.svg'),
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: AppImage(
+                        image: "voucher.svg",
+                        width: 24.w,
+                        height: 24.h,
+                      ),
+                    ),
 
-                    SizedBox(width: 7),
+                    SizedBox(width: 7.w),
 
                     Text('Add vaucher'),
 
                     Spacer(),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(
-                          Colors.pinkAccent,
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(
+                            Colors.pinkAccent,
+                          ),
                         ),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Apply',
-                        style: TextStyle(color: Colors.white),
+                        onPressed: () {},
+                        child: Text(
+                          'Apply',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               LayoutBuilder(
                 builder: (context, constraints) {
@@ -160,13 +178,14 @@ class CheckOutView extends StatelessWidget {
                     direction: Axis.horizontal,
                     length: constraints.maxWidth,
                     dashLength: 6,
+                    dashColor: Color(0xff434C6D4F).withValues(alpha: 0.31),
                   );
                 },
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               Text('- REVIEW PAYMENT'),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
 
               Text('PAYMENT SUMMARY', style: TextStyle(fontSize: 20)),
 
@@ -180,7 +199,7 @@ class CheckOutView extends StatelessWidget {
                 ],
               ),
 
-              Divider(),
+              Divider(color: Color(0xff73B9BB)),
 
               Row(
                 children: [Text('TOTAL + VAT'), Spacer(), Text('16.100 EGP')],
@@ -188,8 +207,8 @@ class CheckOutView extends StatelessWidget {
 
               Center(
                 child: SizedBox(
-                  width: 268,
-                  height: 65,
+                  width: 268.w,
+                  height: 65.h,
                   child: ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(
@@ -198,7 +217,7 @@ class CheckOutView extends StatelessWidget {
                     ),
                     onPressed: () {},
                     label: Text('ORDER', style: TextStyle(color: Colors.white)),
-                    icon: SvgPicture.asset('assets/icons/order.svg'),
+                    icon: AppImage(image: 'order.svg'),
                   ),
                 ),
               ),

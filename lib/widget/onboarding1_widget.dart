@@ -1,4 +1,6 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Onboarding1Widget extends StatelessWidget {
   const Onboarding1Widget({super.key});
@@ -29,11 +31,7 @@ class Onboarding1Widget extends StatelessWidget {
 
           Column(
             children: [
-              Image.asset(
-                "assets/images/on_boarding1.png",
-                width: 300,
-                height: 300,
-              ),
+              AppImage(image: 'on_boarding1.png', width: 300.w, height: 300.h),
 
               SizedBox(height: 28),
 
@@ -45,18 +43,18 @@ class Onboarding1Widget extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.h),
 
               Text(
                 "Makeup has the power to transform your\nmood and empowers you to be a more\n               confident person.",
                 style: TextStyle(color: Color(0xff434C6D)),
               ),
 
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
 
               SizedBox(
-                height: 50,
-                width: 50,
+                height: 50.h,
+                width: 50.w,
                 child: IconButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xff434C6D),

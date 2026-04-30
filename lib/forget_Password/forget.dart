@@ -1,5 +1,8 @@
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../constants/app_image.dart';
 
 class ForgetView extends StatefulWidget {
   const ForgetView({super.key});
@@ -40,17 +43,13 @@ class _ForgetViewState extends State<ForgetView> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
 
             Center(
-              child: Image.asset(
-                "assets/images/splash.png",
-                width: 67,
-                height: 62,
-              ),
+              child: AppImage(image: 'splash.png', width: 67.w, height: 62.h),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
 
             Text(
               "Forget Password",
@@ -72,60 +71,63 @@ class _ForgetViewState extends State<ForgetView> {
               ),
             ),
 
-            SizedBox(height: 45),
+            SizedBox(height: 45.h),
 
-            Row(
-              children: [
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color(0xff434C6D).withValues(alpha: .40),
+            Padding(
+              padding: const EdgeInsets.all(13),
+              child: Row(
+                children: [
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xff434C6D).withValues(alpha: .40),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    child: DropdownButton<int>(
+                      padding: EdgeInsets.all(10),
+
+                      borderRadius: BorderRadius.circular(10),
+
+                      items: [
+                        DropdownMenuItem(child: Text("ِ+02"), value: 02),
+                        DropdownMenuItem(child: Text("+099"), value: 099),
+                        DropdownMenuItem(child: Text("+0123"), value: 0123),
+                      ],
+                      value: _dropdownValue,
+                      onChanged: dropdownCallback,
+                    ),
                   ),
-                  child: DropdownButton<int>(
-                    padding: EdgeInsets.all(10),
+                  SizedBox(width: 5.w),
 
-                    borderRadius: BorderRadius.circular(10),
-
-                    items: [
-                      DropdownMenuItem(child: Text("ِ+02"), value: 02),
-                      DropdownMenuItem(child: Text("+099"), value: 099),
-                      DropdownMenuItem(child: Text("+0123"), value: 0123),
-                    ],
-                    value: _dropdownValue,
-                    onChanged: dropdownCallback,
-                  ),
-                ),
-                SizedBox(width: 5),
-
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Phone Number",
-                        hintStyle: TextStyle(
-                          color: Color(0xff8E8EA9),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: "Phone Number",
+                          hintStyle: TextStyle(
                             color: Color(0xff8E8EA9),
-
-                            style: BorderStyle.solid,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
                           ),
-                          borderRadius: BorderRadius.circular(8),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xff8E8EA9),
+
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
-            SizedBox(height: 56),
+            SizedBox(height: 56.h),
 
             ElvatedbuttonWidget(title: 'Next'),
           ],

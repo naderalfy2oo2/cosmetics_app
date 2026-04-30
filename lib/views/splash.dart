@@ -1,4 +1,6 @@
+import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -14,9 +16,14 @@ class SplashView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: [
-              Image.asset("assets/images/splash.png", width: 200, height: 200),
+              // Image.asset(
+              //   "assets/images/splash.png",
+              //   width: 200.w,
+              //   height: 200.h,
+              // ),
+              AppImage(image: 'splash.png', width: 200.w, height: 200.h),
 
-              SizedBox(height: 0),
+              SizedBox(height: 0.h),
               Text(
                 "COSMATICS",
                 style: TextStyle(
@@ -26,7 +33,8 @@ class SplashView extends StatelessWidget {
                 ),
               ),
 
-              Image.asset("assets/images/splash2.png"),
+              // Image.asset("assets/images/splash2.png"),
+              AppImage(image: 'splash2.png'),
             ],
           ),
         ),
