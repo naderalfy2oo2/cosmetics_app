@@ -1,6 +1,10 @@
-import 'package:cosmetics/views/home.dart';
+import 'package:cosmetics/auth/login.dart';
+import 'package:cosmetics/auth/verify_code.dart';
+import 'package:cosmetics/views/onboarding.dart';
+import 'package:cosmetics/views/splash.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(CosmeticsApp());
@@ -11,10 +15,15 @@ class CosmeticsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Color(0xffD9D9D9)),
-      debugShowCheckedModeBanner: false,
-      home: HomeView(),
+    return ScreenUtilInit(
+      designSize: Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        theme: ThemeData(scaffoldBackgroundColor: Color(0xffD9D9D9)),
+        debugShowCheckedModeBanner: false,
+        home: Login(),
+      ),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cosmetics/views/api_category.dart';
+import 'package:cosmetics/service/api_category.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});

@@ -2,9 +2,7 @@ import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../widget/text_form.dart';
 import '../widget/text_widget.dart';
-import '../widget/textformfield.dart';
 
 class CreatePassword extends StatelessWidget {
   const CreatePassword({super.key});

@@ -1,7 +1,7 @@
 import 'package:cosmetics/views/sucess_dialoug.dart';
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+
 import 'package:lottie/lottie.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import 'package:verification_code_field/verification_code_field.dart';

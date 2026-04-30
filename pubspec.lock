@@ -174,14 +174,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
-  flutter_otp_text_field:
-    dependency: "direct main"
-    description:
-      name: flutter_otp_text_field
-      sha256: e7e589dc51cde120d63da6db55f3cef618f5d013d12adba76137ca1a51ce1390
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.5.1+1"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -190,14 +182,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.33"
-  flutter_spinbox:
+  flutter_screenutil:
     dependency: "direct main"
     description:
-      name: flutter_spinbox
-      sha256: "38d8c1a3a39f0fa72823d4470785f5e165f2deb53531ca7803b54ba45e4dbd46"
+      name: flutter_screenutil
+      sha256: "8239210dd68bee6b0577aa4a090890342d04a136ce1c81f98ee513fc0ce891de"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.1"
+    version: "5.9.3"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -228,10 +220,10 @@ packages:
     dependency: transitive
     description:
       name: google_fonts
-      sha256: db9df7a5898d894eeda4c78143f35c30a243558be439518972366880b80bf88e
+      sha256: "4e9391085e524954a51e3625b7c9c7e9851dc3f376603208bb45c24b9a66255d"
       url: "https://pub.dev"
     source: hosted
-    version: "8.0.2"
+    version: "8.1.0"
   google_maps:
     dependency: transitive
     description:

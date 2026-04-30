@@ -1,5 +1,6 @@
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -29,9 +30,9 @@ class _LoginState extends State<Login> {
           padding: EdgeInsets.all(13),
           child: Column(
             children: [
-              SizedBox(height: 40),
+              SizedBox(height: 40.h),
               Image.asset("assets/images/login.png", width: 284, height: 227),
-              SizedBox(height: 25),
+              SizedBox(height: 25.h),
 
               Text(
                 "Login Now",
@@ -42,7 +43,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
 
-              SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
               Text(
                 "Please enter the details below to continue",
@@ -53,7 +54,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
 
-              SizedBox(height: 25),
+              SizedBox(height: 25.h),
 
               Row(
                 children: [
@@ -78,7 +79,7 @@ class _LoginState extends State<Login> {
                       onChanged: dropdownCallback,
                     ),
                   ),
-                  SizedBox(width: 5),
+                  SizedBox(width: 5.w),
 
                   Expanded(
                     child: Padding(
@@ -148,11 +149,11 @@ class _LoginState extends State<Login> {
                 ),
               ),
 
-              SizedBox(height: 43),
+              SizedBox(height: 43.h),
 
               ElvatedbuttonWidget(title: 'Login'),
 
-              SizedBox(height: 86),
+              SizedBox(height: 86.h),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +167,6 @@ class _LoginState extends State<Login> {
                     ),
                   ),
 
-                  //SizedBox(height: 1),
                   TextButton(
                     onPressed: () {},
                     child: Text(
