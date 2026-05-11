@@ -1,7 +1,14 @@
+import 'dart:isolate';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cosmetics/constants/app_image.dart';
+import 'package:cosmetics/service/dio_helper.dart';
 import 'package:cosmetics/widget/cart_widget.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../models/sliderModel.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -40,188 +47,245 @@ class _HomeViewState extends State<HomeView> {
       "price": "44.99",
     },
   ];
+
+  List<Sum> sliders = [];
+  bool isLoading = false;
+  String? errorMessage;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getSlider();
+  }
+
+  Future<void> getSlider() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+    try {
+      var response = await DioHelper.getData(
+        url: 'https://cosmatics.growfet.com/api/Sliders',
+      );
+
+      print(response.data);
+
+      List data = response.data;
+      setState(() {
+        sliders = data.map((e) => Sum.fromJson(e)).toList();
+      });
+    } on DioException {
+      setState(() => errorMessage = "فشل تحميل البيانات ");
+    } finally {
+      if (mounted) setState(() => isLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xffD9D9D9),
-        body: Padding(
-          padding: const EdgeInsets.all(13),
-          child: Column(
-            children: [
-              SizedBox(height: 12.h),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                  labelText: "Search",
-                  labelStyle: TextStyle(
-                    color: Color(0xff8E8EA9),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                  ),
+        body: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : Padding(
+                padding: const EdgeInsets.all(13),
+                child: Column(
+                  children: [
+                    SizedBox(height: 12.h),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        labelText: "Search",
+                        labelStyle: TextStyle(
+                          color: Color(0xff8E8EA9),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
 
-                  suffixIcon: Icon(Icons.search, size: 17),
-                  suffixIconColor: Color(0xff8E8EA9),
-                ),
-              ),
-
-              SizedBox(height: 15.h),
-
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(18),
-                    child: Image.asset(
-                      "assets/images/home.jpg",
-                      width: double.infinity,
-                      height: 320.h,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    top: 85,
-                    right: 0,
-                    left: 0,
-                    child: Container(
-                      width: double.infinity,
-                      height: 151.h,
-                      decoration: BoxDecoration(
-                        color: Color(0xffE9DCD3).withValues(alpha: 0.5),
+                        suffixIcon: Icon(Icons.search, size: 17),
+                        suffixIconColor: Color(0xff8E8EA9),
                       ),
+                    ),
 
-                      child: Padding(
-                        padding: const EdgeInsets.all(13),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                    SizedBox(height: 15.h),
 
+                    Column(
+                      children: [
+                        Stack(
                           children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "50% OFF DISCOUNT \n",
-                                          style: TextStyle(
-                                            color: Color(0xff62322D),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
+                            ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(18),
 
-                                        TextSpan(
-                                          text: 'CUPON CODE : 125865',
+                              child: CarouselSlider.builder(
+                                itemCount: sliders.length,
 
-                                          style: TextStyle(
-                                            color: Color(0xff62322D),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
+                                itemBuilder: (context, itemIndex, pageViewIndex) {
+                                  return SizedBox(
+                                    height: 250,
+                                    width: double.infinity,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(18),
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: [
+                                          Image.network(
+                                            sliders[itemIndex].imageUrl,
+                                            fit: BoxFit.cover,
                                           ),
-                                        ),
-                                      ],
+
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional.center,
+                                            child: Container(
+                                              height: 151,
+                                              width: double.infinity,
+                                              color: Color(
+                                                0xffE9DCD3,
+                                              ).withOpacity(0.5),
+                                              padding: EdgeInsets.all(12),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: Text.rich(
+                                                          TextSpan(
+                                                            children: [
+                                                              TextSpan(
+                                                                text:
+                                                                    "${sliders[itemIndex].discountPercent} DISCOUNT\n",
+                                                              ),
+                                                              TextSpan(
+                                                                text:
+                                                                    "COUPON CODE: ${sliders[itemIndex].couponCode}",
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      AppImage(
+                                                        image: 'offer.png',
+                                                        width: 50,
+                                                        height: 50,
+                                                      ),
+                                                    ],
+                                                  ),
+
+                                                  SizedBox(height: 12),
+
+                                                  Row(
+                                                    children: [
+                                                      AppImage(
+                                                        image: 'offer.png',
+                                                        width: 55.w,
+                                                        height: 55.h,
+                                                      ),
+
+                                                      Spacer(),
+
+                                                      Text.rich(
+                                                        TextSpan(
+                                                          children: [
+                                                            TextSpan(
+                                                              text:
+                                                                  "Hurry up!\n",
+                                                              style: TextStyle(
+                                                                color: Color(
+                                                                  0xff434C6D,
+                                                                ),
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                              ),
+                                                            ),
+
+                                                            TextSpan(
+                                                              text:
+                                                                  'Skin care only !',
+
+                                                              style: TextStyle(
+                                                                color: Color(
+                                                                  0xff434C6D,
+                                                                ),
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+
+                                                      SizedBox(width: 10.w),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  );
+                                },
+
+                                options: CarouselOptions(
+                                  height: 250,
+                                  autoPlay: true,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1,
+                                  autoPlayInterval: Duration(seconds: 3),
+                                  scrollDirection: Axis.horizontal,
                                 ),
-
-                                SizedBox(width: 12.w),
-
-                                Image.asset(
-                                  "assets/images/offer.png",
-                                  width: 55.w,
-                                  height: 55.h,
-                                ),
-                              ],
-                            ),
-
-                            SizedBox(width: 12.w),
-
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/offer.png",
-                                  width: 55.w,
-                                  height: 55.h,
-                                ),
-
-                                SizedBox(width: 129.w),
-                                Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: "Hurry up!\n",
-                                        style: TextStyle(
-                                          color: Color(0xff434C6D),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-
-                                      TextSpan(
-                                        text: 'Skin care only !',
-
-                                        style: TextStyle(
-                                          color: Color(0xff434C6D),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                SizedBox(width: 10.w),
-                              ],
+                              ),
                             ),
                           ],
                         ),
+                      ],
+                    ),
+
+                    SizedBox(height: 26),
+
+                    Align(
+                      alignment: AlignmentGeometry.centerLeft,
+                      child: Text(
+                        "Top rated products",
+                        style: TextStyle(
+                          color: Color(0xff434C6D),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
 
-              SizedBox(height: 26.h),
+                    Expanded(
+                      child: GridView.builder(
+                        shrinkWrap: true,
 
-              Align(
-                alignment: AlignmentGeometry.centerLeft,
-                child: Text(
-                  "Top rated products",
-                  style: TextStyle(
-                    color: Color(0xff434C6D),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
+                        itemCount: items.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                        ),
+                        itemBuilder: (context, index) {
+                          final item = items[index];
+                          return CartWidget(
+                            image: item["image"],
+                            title: item["title"],
+                            price: item["price"],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-
-              Expanded(
-                child: GridView.builder(
-                  shrinkWrap: true,
-
-                  itemCount: items.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemBuilder: (context, index) {
-                    final item = items[index];
-                    return CartWidget(
-                      image: item["image"],
-                      title: item["title"],
-                      price: item["price"],
-                    );
-                  },
-                ),
-              ),
-
-              SizedBox(height: 17.h),
-            ],
-          ),
-        ),
       ),
     );
   }

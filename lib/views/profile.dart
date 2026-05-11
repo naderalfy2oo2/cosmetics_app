@@ -1,7 +1,6 @@
 import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -65,62 +64,88 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImage(image: 'edit_info.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: AppImage(image: 'edit_info.svg'),
+                  ),
                   Text('  Edit Info'),
-                  SizedBox(width: 254),
                   Spacer(),
 
-                  Icon(Icons.play_arrow),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: Icon(Icons.play_arrow),
+                  ),
                 ],
               ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImage(image: 'order_history.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: AppImage(image: 'order_history.svg'),
+                  ),
                   Text(' Order History'),
 
                   Spacer(),
 
-                  Icon(Icons.play_arrow),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: Icon(Icons.play_arrow),
+                  ),
                 ],
               ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImage(image: 'wallet.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: AppImage(image: 'wallet.svg'),
+                  ),
                   Text(' Wallet'),
 
-                  SizedBox(width: 254.w),
-
                   Spacer(),
-                  Icon(Icons.play_arrow),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: Icon(Icons.play_arrow),
+                  ),
                 ],
               ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImage(image: 'settings.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: AppImage(image: 'settings.svg'),
+                  ),
                   Text(' Settings'),
-                  SizedBox(width: 254.w),
 
                   Spacer(),
 
-                  Icon(Icons.play_arrow),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: Icon(Icons.play_arrow),
+                  ),
                 ],
               ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImage(image: 'voucher.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: AppImage(image: 'voucher.svg'),
+                  ),
                   Text(' Vocher'),
-                  SizedBox(width: 254.w),
+
                   Spacer(),
 
-                  Icon(Icons.play_arrow),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: Icon(Icons.play_arrow),
+                  ),
                 ],
               ),
 
@@ -129,7 +154,10 @@ class ProfileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImage(image: 'logout.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: AppImage(image: 'logout.svg'),
+                  ),
                   Text(
                     ' LogOut',
                     style: TextStyle(
@@ -144,67 +172,6 @@ class ProfileView extends StatelessWidget {
               ),
 
               SizedBox(height: 200.h),
-
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Container(
-                  height: 80.h,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF7F7F7),
-                    borderRadius: BorderRadius.circular(25),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 15,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.home_filled,
-                          size: 30,
-                          color: Colors.pinkAccent,
-                        ),
-                      ),
-
-                      InkWell(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.grid_view_rounded,
-                          size: 30,
-                          color: Colors.grey,
-                        ),
-                      ),
-
-                      InkWell(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.shopping_cart_outlined,
-                          size: 30,
-                          color: Colors.grey,
-                        ),
-                      ),
-
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProfileView(),
-                            ),
-                          );
-                        },
-                        child: Icon(Icons.person, size: 30, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ],
           ),
         ),

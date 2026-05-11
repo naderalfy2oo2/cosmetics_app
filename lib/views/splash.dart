@@ -16,11 +16,6 @@ class SplashView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: [
-              // Image.asset(
-              //   "assets/images/splash.png",
-              //   width: 200.w,
-              //   height: 200.h,
-              // ),
               AppImage(image: 'splash.png', width: 200.w, height: 200.h),
 
               SizedBox(height: 0.h),
@@ -33,7 +28,6 @@ class SplashView extends StatelessWidget {
                 ),
               ),
 
-              // Image.asset("assets/images/splash2.png"),
               AppImage(image: 'splash2.png'),
             ],
           ),

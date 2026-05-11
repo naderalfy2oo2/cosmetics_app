@@ -5,14 +5,13 @@ class AppImage extends StatelessWidget {
   final String image;
   final double? width, height;
   final Color? color;
- 
+
   const AppImage({
     super.key,
     required this.image,
     this.width,
     this.height,
     this.color,
-    
   });
 
   @override

@@ -35,6 +35,7 @@ class CartWidget extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(12),
+
                   child: Image.asset(
                     image,
                     width: 161.w,
@@ -48,20 +49,23 @@ class CartWidget extends StatelessWidget {
                   alignment: AlignmentGeometry.topRight,
                   child: GestureDetector(
                     onTap: () {},
-                    child: Container(
-                      padding: EdgeInsets.all(6),
-                      margin: EdgeInsets.all(6),
-                      width: 32.w,
-                      height: 32.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Color(0xffFFFAFA),
-                      ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6),
 
-                      child: AppImage(
-                        image: 'basket.png',
-                        width: 16.w,
-                        height: 16.h,
+                      child: Container(
+                        margin: EdgeInsets.all(6),
+                        width: 32.w,
+                        height: 32.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Color(0xffFFFAFA),
+                        ),
+
+                        child: AppImage(
+                          image: 'basket.png',
+                          width: 16.w,
+                          height: 16.h,
+                        ),
                       ),
                     ),
                   ),
