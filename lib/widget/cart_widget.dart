@@ -2,15 +2,22 @@ import 'package:cosmetics/constants/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../views/cart_view.dart';
+
 class CartWidget extends StatelessWidget {
   final String image;
   final String title;
   final String price;
+  final int productId;
+  final VoidCallback onAdd;
+
   const CartWidget({
     super.key,
     required this.image,
     required this.title,
     required this.price,
+    required this.productId,
+    required this.onAdd,
   });
 
   @override
@@ -36,7 +43,7 @@ class CartWidget extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(12),
 
-                  child: Image.asset(
+                  child: Image.network(
                     image,
                     width: 161.w,
 
@@ -47,24 +54,36 @@ class CartWidget extends StatelessWidget {
 
                 Align(
                   alignment: AlignmentGeometry.topRight,
+
                   child: GestureDetector(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(6),
-
-                      child: Container(
-                        margin: EdgeInsets.all(6),
-                        width: 32.w,
-                        height: 32.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Color(0xffFFFAFA),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CartView(),
                         ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
 
-                        child: AppImage(
-                          image: 'basket.png',
-                          width: 16.w,
-                          height: 16.h,
+                      child: GestureDetector(
+                        onTap: onAdd,
+                        child: Container(
+                          margin: EdgeInsets.all(12),
+
+                          width: 32.w,
+                          height: 32.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xffFFFAFA),
+                          ),
+
+                          child: AppImage(
+                            image: 'basket.png',
+                            width: 16.w,
+                            height: 16.h,
+                          ),
                         ),
                       ),
                     ),

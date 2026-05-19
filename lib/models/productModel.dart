@@ -1,37 +1,34 @@
-class ListProduct {
-  final int id;
-  final String name;
-  final String description;
-  final double price;
-  final int stock;
-  final String imageUrl;
-  final int? categoryId;
+class ProductsModel {
+  ProductsModel({required this.product});
+  late final List<resultProduct> product;
 
-  ListProduct({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.price,
-    required this.stock,
-    required this.imageUrl,
-    this.categoryId,
-  });
+  ProductsModel.fromJson(Map<String, dynamic> json) {
+    product = List.from(
+      json['product'],
+    ).map((e) => resultProduct.fromJson(e)).toList();
+  }
+}
 
-  factory ListProduct.fromJson(Map<String, dynamic> json) {
-    String img = json['imageUrl'] ?? "";
+class resultProduct {
+  late final int id;
+  late final String nameEn;
+  late final String nameAr;
+  late final String descriptionEn;
+  late final String descriptionAr;
+  late final double? price;
+  late final int stock;
+  late final String imageUrl;
+  late final int categoryId;
 
-    if (img.isNotEmpty && !img.startsWith("http")) {
-      img = "https://cosmatics.growfet.com$img";
-    }
-
-    return ListProduct(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? "",
-      description: json['description'] ?? "",
-      price: (json['price'] ?? 0).toDouble(),
-      stock: json['stock'] ?? 0,
-      imageUrl: img,
-      categoryId: json['categoryId'],
-    );
+  resultProduct.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    nameEn = json['name_en'];
+    nameAr = json['name_ar'];
+    descriptionEn = json['description_en'];
+    descriptionAr = json['description_ar'];
+    price = json['price'];
+    stock = json['stock'];
+    imageUrl = json['image_url'];
+    categoryId = json['category_id'];
   }
 }

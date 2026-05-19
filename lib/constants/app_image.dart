@@ -24,12 +24,7 @@ class AppImage extends StatelessWidget {
         height: height,
       );
     } else if (image.startsWith('http')) {
-      return Image.network(
-        "assets/images/$image",
-        width: width,
-        height: height,
-        color: color,
-      );
+      return Image.network(image, width: width, height: height, color: color);
     }
     return Image.asset(
       'assets/images/$image',

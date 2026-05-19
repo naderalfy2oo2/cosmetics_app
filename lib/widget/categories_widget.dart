@@ -24,7 +24,7 @@ class CategoriesWidget extends StatelessWidget {
           Row(
             children: [
               ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(12),
+                borderRadius: BorderRadiusGeometry.circular(20),
                 child: AppImage(image: image, width: 64.w, height: 69.h),
               ),
 

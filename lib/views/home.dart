@@ -1,7 +1,9 @@
-import 'dart:isolate';
+import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cosmetics/constants/app_image.dart';
+
+import 'package:cosmetics/models/productModel.dart';
 import 'package:cosmetics/service/dio_helper.dart';
 import 'package:cosmetics/widget/cart_widget.dart';
 import 'package:dio/dio.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/sliderModel.dart';
+import '../service/api_category.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -18,37 +21,39 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final List<Map<String, dynamic>> items = [
-    {
-      "image": "assets/images/grid1.jpg",
-      "title": "Face tint / lip tint",
+  // final List<Map<String, dynamic>> items = [
+  //   {
+  //     "image": "assets/images/grid1.jpg",
+  //     "title": "Face tint / lip tint",
 
-      "price": "44.99",
-    },
+  //     "price": "44.99",
+  //   },
 
-    {
-      "image": "assets/images/grid2.jpg",
-      "title": "Athe Red lipstick",
+  //   {
+  //     "image": "assets/images/grid2.jpg",
+  //     "title": "Athe Red lipstick",
 
-      "price": "44.99",
-    },
+  //     "price": "44.99",
+  //   },
 
-    {
-      "image": "assets/images/grid3.jpg",
-      "title": "Mascara for lashes",
+  //   {
+  //     "image": "assets/images/grid3.jpg",
+  //     "title": "Mascara for lashes",
 
-      "price": "44.99",
-    },
+  //     "price": "44.99",
+  //   },
 
-    {
-      "image": "assets/images/grid4.jpg",
-      "title": "Blemish cover",
+  //   {
+  //     "image": "assets/images/grid4.jpg",
+  //     "title": "Blemish cover",
 
-      "price": "44.99",
-    },
-  ];
+  //     "price": "44.99",
+  //   },
+  // ];
 
   List<Sum> sliders = [];
+  List<resultProduct> prod = [];
+
   bool isLoading = false;
   String? errorMessage;
   @override
@@ -56,6 +61,7 @@ class _HomeViewState extends State<HomeView> {
     // TODO: implement initState
     super.initState();
     getSlider();
+    getPorduct();
   }
 
   Future<void> getSlider() async {
@@ -73,6 +79,39 @@ class _HomeViewState extends State<HomeView> {
       List data = response.data;
       setState(() {
         sliders = data.map((e) => Sum.fromJson(e)).toList();
+      });
+    } on DioException {
+      setState(() => errorMessage = "فشل تحميل البيانات ");
+    } finally {
+      if (mounted) setState(() => isLoading = false);
+    }
+  }
+
+  Future<void> getPorduct() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+    try {
+      // var response = await DioHelper.getData(
+      //   url: 'https://cosmatics.growfet.com/api/Products',
+
+      final response = await DioHelper.getData(
+        url: 'https://cosmatics.growfet.com/api/Products',
+      );
+
+      if (response.isSuccess) {
+        List data = response.data;
+
+        prod = data.map((e) => resultProduct.fromJson(e)).toList();
+
+        setState(() {});
+      }
+
+      print(response.data);
+      List data = response.data;
+      setState(() {
+        prod = data.map((e) => resultProduct.fromJson(e)).toList();
       });
     } on DioException {
       setState(() => errorMessage = "فشل تحميل البيانات ");
@@ -267,18 +306,38 @@ class _HomeViewState extends State<HomeView> {
                       child: GridView.builder(
                         shrinkWrap: true,
 
-                        itemCount: items.length,
+                        itemCount: prod.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
                         ),
                         itemBuilder: (context, index) {
-                          final item = items[index];
+                          final item = prod[index];
+                          // return CartWidget(
+                          //   image: item.imageUrl,
+                          //   title: item.nameEn,
+                          //   price: '${item.price}',
+                          // );
+
                           return CartWidget(
-                            image: item["image"],
-                            title: item["title"],
-                            price: item["price"],
+                            image: item.imageUrl,
+
+                            title: item.nameEn,
+
+                            price: "${item.price}",
+
+                            productId: item.id,
+
+                            onAdd: () async {
+                              final res = await CartService().add(item.id);
+
+                              if (res.isSuccess) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("Added")),
+                                );
+                              }
+                            },
                           );
                         },
                       ),

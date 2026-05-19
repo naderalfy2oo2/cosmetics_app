@@ -1,18 +1,18 @@
-import 'package:cosmetics/auth/signIn.dart';
-import 'package:cosmetics/auth/verify_code.dart';
 import 'package:cosmetics/service/dio_helper.dart';
-import 'package:cosmetics/views/cateories.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'auth/login.dart';
-import 'views/check_out.dart';
-import 'views/home.dart';
 import 'views/navigation.dart';
 
 void main() {
   runApp(CosmeticsApp());
-  DioHelper.init();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //DioHelper.init();
+  DioHelper.setToken(
+    'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMDI2NSIsInVuaXF1ZV9uYW1lIjoibmFkZXIxMiIsImVtYWlsIjoiYWw1MTczOTc3QGdtYWlsLmNvbSIsInJvbGUiOiJDdXN0b21lciIsIm5iZiI6MTc3OTE5NzA0OCwiZXhwIjoxNzc5MTk3NjQ4LCJpYXQiOjE3NzkxOTcwNDgsImlzcyI6IkNvc21hdGljc0FwaSIsImF1ZCI6IkNvc21hdGljc1VzZXJzIn0.B3b3_R1MSGT17H0Gb5_xNi1jLHw1SOyh8fJAoHaoAA9jUE__0SzNtvomKXSwnmz8pCvCX2IoLeo4MufedQzM7Q',
+  );
 }
 
 class CosmeticsApp extends StatelessWidget {

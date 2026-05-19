@@ -8,12 +8,24 @@ class CartviewsWidget extends StatelessWidget {
   final String title;
   final String description;
   final String price;
+  final int quantity;
+
+  final VoidCallback onDelete;
+
+  final VoidCallback onPlus;
+
+  final VoidCallback onMinus;
+
   const CartviewsWidget({
     super.key,
     required this.image,
     required this.title,
     required this.description,
     required this.price,
+    required this.quantity,
+    required this.onDelete,
+    required this.onPlus,
+    required this.onMinus,
   });
 
   @override
@@ -33,7 +45,7 @@ class CartviewsWidget extends StatelessWidget {
                     child: AppImage(image: image, width: 102.w, height: 102.h),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: onDelete,
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Padding(
@@ -98,10 +110,18 @@ class CartviewsWidget extends StatelessWidget {
               width: 142.w,
               height: 42.h,
               child: SpinBox(
-                min: 0,
+                min: 1,
                 max: 100,
-                value: 0.1,
-                onChanged: (value) => print(value),
+
+                value: quantity.toDouble(),
+
+                onChanged: (v) {
+                  if (v > quantity) {
+                    onPlus();
+                  } else {
+                    onMinus();
+                  }
+                },
               ),
             ),
           ),

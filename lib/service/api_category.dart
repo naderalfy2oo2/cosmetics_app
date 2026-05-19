@@ -1,95 +1,86 @@
-import 'package:dio/dio.dart';
-import 'package:cosmetics/models/productModel.dart';
-import 'package:cosmetics/models/sliderModel.dart';
+// import 'dart:developer';
+// import 'package:cosmetics/models/cart_model.dart';
 
-class ApiServices {
-  final Dio dio = Dio(BaseOptions(baseUrl: 'https://cosmatics.growfet.com'));
+// import 'dio_helper.dart';
 
-  Future<List<SliderModel>> getSliders() async {
-    try {
-      final response = await dio.get('/api/Sliders');
-      final data = response.data;
+// class CartService {
+//   // GET CART
+//   static Future<List<CartItem>> getCart() async {
+//     final res = await DioHelper.getData(url: "/api/Cart");
 
-      if (data == null) return [];
+//     if (!res.isSuccess) return [];
 
-      if (data is List) {
-        return data.map((e) => SliderModel.fromJson(e)).toList();
-      }
+//     final List data = res.data["items"] ?? [];
 
-      if (data is Map && data['data'] is List) {
-        return (data['data'] as List)
-            .map((e) => SliderModel.fromJson(e))
-            .toList();
-      }
+//     return data.map((e) => CartItem.fromJson(e)).toList();
+//   }
 
-      return [];
-    } catch (e) {
-      print("Slider Error: $e");
-      return [];
-    }
-  }
+//   // ADD TO CART
+//   Future add(int id) async {
+//     print('id $id');
+//     final res = await DioHelper.postData(
+//       url: '/api/Cart/add',
+//       data: {"productId": id, "quantity": 1},
+//     );
 
-  Future<List<ListProduct>> getProducts() async {
-    try {
-      final response = await dio.get('/api/Products');
-      final data = response.data;
+//     log("ADD RESPONSE: ${res}");
+//     return res;
+//   }
 
-      if (data == null) return [];
+//   // UPDATE
+//   static Future update(int id, int qty) async {
+//     return await DioHelper.putData(
+//       url: '/api/Cart/update',
+//       data: {"productId": id, "quantity": qty},
+//     );
+//   }
 
-      if (data is List) {
-        return data.map((e) => ListProduct.fromJson(e)).toList();
-      }
+//   // DELETE
+//   static Future delete(int id) async {
+//     return await DioHelper.deleteData(url: '/api/Cart/remove/$id');
+//   }
+// }
 
-      if (data is Map && data['data'] is List) {
-        return (data['data'] as List)
-            .map((e) => ListProduct.fromJson(e))
-            .toList();
-      }
+// class CustomResponse {
+//   final bool isSuccess;
+//   final dynamic data;
 
-      return [];
-    } catch (e) {
-      print("Product Error: $e");
-      return [];
-    }
-  }
+//   CustomResponse(this.isSuccess, {this.data});
+// }
+//????
 
-  Future<List<CategoryData>> getCategories() async {
-    try {
-      final response = await dio.get('/api/Categories');
-      final data = response.data;
+import '../models/cart_model.dart';
+import 'dio_helper.dart';
 
-      if (data == null) return [];
+class CartService {
+  static Future<List<CartItem>> getCart() async {
+    final res = await DioHelper.getData(url: "/api/Cart");
 
-      if (data is List) {
-        return data.map((e) => CategoryData.fromJson(e)).toList();
-      }
-
-      if (data is Map && data['data'] is List) {
-        return (data['data'] as List)
-            .map((e) => CategoryData.fromJson(e))
-            .toList();
-      }
-
-      return [];
-    } catch (e) {
-      print("Category Error: $e");
+    if (!res.isSuccess) {
       return [];
     }
+
+    List data = res.data["items"] ?? [];
+
+    return data.map((e) => CartItem.fromJson(e)).toList();
   }
-}
 
-class CategoryData {
-  final int id;
-  final String name;
-  final String image;
-
-  CategoryData({required this.id, required this.name, required this.image});
-
-  factory CategoryData.fromJson(Map<String, dynamic> json) {
-    return CategoryData(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? "",
-      image: json['image'] ?? "",
+  Future<CustomResponse> add(int id) async {
+    return await DioHelper.postData(
+      url: "/api/Cart/add",
+      data: {"productId": id, "quantity": 1},
     );
+  }
+
+  static Future update(int id, int qty) async {
+    return await DioHelper.putData(
+      url: "/api/Cart/update",
+
+      data: {"productId": id, "quantity": qty},
+    );
+  }
+
+  static Future delete(int id) async {
+    return await DioHelper.deleteData(url: "/api/Cart/remove/$id");
   }
 }
