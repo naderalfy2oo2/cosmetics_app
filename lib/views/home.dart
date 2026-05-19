@@ -21,36 +21,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  // final List<Map<String, dynamic>> items = [
-  //   {
-  //     "image": "assets/images/grid1.jpg",
-  //     "title": "Face tint / lip tint",
-
-  //     "price": "44.99",
-  //   },
-
-  //   {
-  //     "image": "assets/images/grid2.jpg",
-  //     "title": "Athe Red lipstick",
-
-  //     "price": "44.99",
-  //   },
-
-  //   {
-  //     "image": "assets/images/grid3.jpg",
-  //     "title": "Mascara for lashes",
-
-  //     "price": "44.99",
-  //   },
-
-  //   {
-  //     "image": "assets/images/grid4.jpg",
-  //     "title": "Blemish cover",
-
-  //     "price": "44.99",
-  //   },
-  // ];
-
   List<Sum> sliders = [];
   List<resultProduct> prod = [];
 
@@ -93,9 +63,6 @@ class _HomeViewState extends State<HomeView> {
       errorMessage = null;
     });
     try {
-      // var response = await DioHelper.getData(
-      //   url: 'https://cosmatics.growfet.com/api/Products',
-
       final response = await DioHelper.getData(
         url: 'https://cosmatics.growfet.com/api/Products',
       );
