@@ -1,8 +1,6 @@
-//??????
-
 import 'package:dio/dio.dart';
 
-class LoginApi {
+class verifyApi {
   static final Dio dio = Dio(
     BaseOptions(
       baseUrl: 'https://cosmatics.growfet.com',
@@ -10,24 +8,25 @@ class LoginApi {
     ),
   );
 
-  static Future<Map<String, dynamic>?> login({
-    required String password,
+  static Future<Map<String, dynamic>?> verify({
+    required String otpCode,
     required String countryCode,
     required dynamic phoneNumber,
   }) async {
     try {
       final response = await dio.post(
-        '/api/Auth/login',
+        '/api/Auth/verify-otp',
         data: {
           "countryCode": countryCode,
-          "password": password,
+
           "phoneNumber": phoneNumber,
+          "otpCode": otpCode,
         },
       );
 
       if (response.statusCode == 200) {
-        return response.data;
         print(response.data);
+        return response.data;
       }
     } catch (e) {
       return null;

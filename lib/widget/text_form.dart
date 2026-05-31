@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 class TextFormWidget extends StatelessWidget {
   final String labeltext;
   final String hinttext;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
   const TextFormWidget({
     super.key,
     required this.labeltext,
     required this.hinttext,
+    required this.controller,
+    required this.validator,
   });
 
   @override
@@ -14,6 +18,8 @@ class TextFormWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        validator: validator,
+        controller: controller,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

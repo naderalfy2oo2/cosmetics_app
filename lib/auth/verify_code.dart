@@ -1,3 +1,5 @@
+import 'package:cosmetics/helper_methods.dart';
+import 'package:cosmetics/service/api_verifyCode.dart';
 import 'package:cosmetics/widget/elvatedButton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,10 +9,25 @@ import 'package:slide_countdown/slide_countdown.dart';
 import 'package:verification_code_field/verification_code_field.dart';
 
 import '../constants/app_image.dart';
+import '../service/snackbar.dart';
+import '../views/navigation.dart';
 
-class VerifyCode extends StatelessWidget {
-  const VerifyCode({super.key});
+class VerifyCode extends StatefulWidget {
+  final String countryCode;
+  final String phoneNumber;
+  const VerifyCode({
+    super.key,
+    required this.countryCode,
+    required this.phoneNumber,
+  });
 
+  @override
+  State<VerifyCode> createState() => _VerifyCodeState();
+}
+
+class _VerifyCodeState extends State<VerifyCode> {
+  String otp = "";
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,7 +83,9 @@ class VerifyCode extends StatelessWidget {
             ),
             VerificationCodeField(
               codeDigit: CodeDigit.four,
-              onSubmit: (value) {},
+              onSubmit: (value) {
+                otp = value;
+              },
               enabled: true,
               showCursor: true,
               filled: true,
@@ -171,7 +190,46 @@ class VerifyCode extends StatelessWidget {
 
                                 SizedBox(height: 23.h),
 
-                                ElvatedbuttonWidget(title: "Go to home"),
+                                ElvatedbuttonWidget(
+                                  title: "Go to home",
+                                  onPressed: () async {
+                                    if (otp.length != 4) {
+                                      Snack.error(
+                                        context,
+                                        "Enter cmplete verify code",
+                                      );
+                                      return;
+                                    }
+
+                                    setState(() {
+                                      loading = true;
+                                    });
+
+                                    final success = await verifyApi.verify(
+                                      countryCode: widget.countryCode,
+                                      phoneNumber: widget.phoneNumber,
+
+                                      otpCode: otp,
+                                    );
+
+                                    setState(() {
+                                      loading = false;
+                                    });
+
+                                    print("verify result => $success");
+
+                                    if (success != null) {
+                                      Snack.success(
+                                        context,
+                                        " verify Created Successfully",
+                                      );
+
+                                      goTo(page: const NavigationHomeView());
+                                    } else {
+                                      Snack.error(context, " verify Failed");
+                                    }
+                                  },
+                                ),
                               ],
                             ),
                           ),

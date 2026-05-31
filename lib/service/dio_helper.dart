@@ -15,9 +15,20 @@ class DioHelper {
   static String token = "";
 
   static void setToken(String t) {
+    print("TOKEN SET: $t");
     token = t;
 
-    dio.options.headers["Authorization"] = "Bearer $token";
+    dio.interceptors.clear();
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          options.headers["Authorization"] = "Bearer $token";
+          print("AUTH HEADER: ${options.headers["Authorization"]}");
+          return handler.next(options);
+        },
+      ),
+    );
   }
 
   // GET

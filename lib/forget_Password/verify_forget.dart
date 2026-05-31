@@ -1,14 +1,31 @@
+import 'package:cosmetics/forget_Password/create_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import 'package:verification_code_field/verification_code_field.dart';
 
 import '../constants/app_image.dart';
+import '../helper_methods.dart';
+import '../service/api_verifyCode.dart';
+import '../service/snackbar.dart';
 import '../widget/elvatedButton_widget.dart';
 
-class VerifyForget extends StatelessWidget {
-  const VerifyForget({super.key});
+class VerifyForget extends StatefulWidget {
+  final String countryCode;
+  final String phoneNumber;
+  VerifyForget({
+    super.key,
+    required this.countryCode,
+    required this.phoneNumber,
+  });
 
+  @override
+  State<VerifyForget> createState() => _VerifyForgetState();
+}
+
+class _VerifyForgetState extends State<VerifyForget> {
+  String otp = "";
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -105,7 +122,9 @@ class VerifyForget extends StatelessWidget {
               ),
               VerificationCodeField(
                 codeDigit: CodeDigit.four,
-                onSubmit: (value) {},
+                onSubmit: (value) {
+                  otp = value;
+                },
                 enabled: true,
                 showCursor: true,
                 filled: true,
@@ -161,8 +180,40 @@ class VerifyForget extends StatelessWidget {
 
               SizedBox(height: 113.h),
 
-              ElvatedbuttonWidget(title: 'Done'),
+              ElvatedbuttonWidget(
+                title: 'Done',
+                onPressed: () async {
+                  if (otp.length != 4) {
+                    Snack.error(context, "Enter cmplete verify code");
+                    return;
+                  }
 
+                  setState(() {
+                    loading = true;
+                  });
+
+                  final success = await verifyApi.verify(
+                    countryCode: widget.countryCode,
+                    phoneNumber: widget.phoneNumber,
+
+                    otpCode: otp,
+                  );
+
+                  setState(() {
+                    loading = false;
+                  });
+
+                  print("verify result => $success");
+
+                  if (success != null) {
+                    Snack.success(context, " verify Created Successfully");
+
+                    goTo(page: CreatePassword(phone: widget.phoneNumber));
+                  } else {
+                    Snack.error(context, " verify Failed");
+                  }
+                },
+              ),
               SizedBox(height: 129.h),
             ],
           ),

@@ -45,17 +45,6 @@ class _CateoriesViewState extends State<CateoriesView> {
     }
   }
 
-  final List<Map<String, dynamic>> items = [
-    {"image": "bundles.jpg", "title": "Bundles"},
-
-    {"image": "per.jpg", "title": "Perfumes"},
-
-    {"image": "mekup.jpg", "title": "Makeup"},
-
-    {"image": "skin_cure.jpg", "title": "skin_cure"},
-
-    {"image": "gifts.jpg", "title": "gifts"},
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -56,14 +56,14 @@ class CartWidget extends StatelessWidget {
                   alignment: AlignmentGeometry.topRight,
 
                   child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CartView(),
-                        ),
-                      );
-                    },
+                    // onTap: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => const CartView(),
+                    //     ),
+                    //   );
+                    // },
                     child: Padding(
                       padding: const EdgeInsets.all(12),
 

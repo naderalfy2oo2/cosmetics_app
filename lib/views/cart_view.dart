@@ -1,9 +1,11 @@
 import 'package:cosmetics/constants/app_image.dart';
+import 'package:cosmetics/helper_methods.dart';
 import 'package:flutter/material.dart';
 
 import '../models/cart_model.dart';
 import '../service/api_category.dart';
 import '../widget/cartViews_widget.dart';
+import 'check_out.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -69,7 +71,9 @@ class _CartViewState extends State<CartView> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              goTo(page: const CheckOutView());
+            },
             icon: AppImage(image: 'cart.png'),
           ),
         ],

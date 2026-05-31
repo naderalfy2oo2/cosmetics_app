@@ -1,8 +1,6 @@
-//??????
-
 import 'package:dio/dio.dart';
 
-class LoginApi {
+class forgetPasswordApi {
   static final Dio dio = Dio(
     BaseOptions(
       baseUrl: 'https://cosmatics.growfet.com',
@@ -10,24 +8,19 @@ class LoginApi {
     ),
   );
 
-  static Future<Map<String, dynamic>?> login({
-    required String password,
+  static Future<Map<String, dynamic>?> forgetPassword({
     required String countryCode,
     required dynamic phoneNumber,
   }) async {
     try {
       final response = await dio.post(
-        '/api/Auth/login',
-        data: {
-          "countryCode": countryCode,
-          "password": password,
-          "phoneNumber": phoneNumber,
-        },
+        '/api/Auth/forgot-password',
+        data: {"countryCode": countryCode, "phoneNumber": phoneNumber},
       );
 
       if (response.statusCode == 200) {
-        return response.data;
         print(response.data);
+        return response.data;
       }
     } catch (e) {
       return null;

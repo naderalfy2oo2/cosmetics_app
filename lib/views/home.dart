@@ -281,11 +281,6 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         itemBuilder: (context, index) {
                           final item = prod[index];
-                          // return CartWidget(
-                          //   image: item.imageUrl,
-                          //   title: item.nameEn,
-                          //   price: '${item.price}',
-                          // );
 
                           return CartWidget(
                             image: item.imageUrl,
